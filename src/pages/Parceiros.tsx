@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Handshake, Send, Users, Award, TrendingUp, CheckCircle, Lightbulb, Target, Globe, Star } from 'lucide-react';
+import { Send, Users, Award, TrendingUp, CheckCircle, Lightbulb, Target, Globe, Star } from 'lucide-react';
 
 // Schema de validação para o formulário de parceiros
 const parceiroSchema = z.object({
@@ -11,7 +11,11 @@ const parceiroSchema = z.object({
   linkedinPortfolio: z.string().url('Insira uma URL válida (LinkedIn ou Portfólio)'),
   whatsapp: z.string().min(10, 'WhatsApp deve ter pelo menos 10 dígitos'),
   email: z.string().email('E-mail inválido'),
-  mensagemApresentacao: z.string().min(50, 'Mensagem deve ter pelo menos 50 caracteres')
+  mensagemApresentacao: z.string().min(50, 'Mensagem deve ter pelo menos 50 caracteres'),
+  politicaPrivacidade: z.literal(true, {
+    errorMap: () => ({ message: 'Você deve concordar com a Política de Privacidade para enviar o formulário.' })
+  }),
+  codigo: z.string().optional()
 });
 
 type ParceiroFormData = z.infer<typeof parceiroSchema>;
@@ -33,15 +37,16 @@ const Parceiros: React.FC = () => {
     // Aqui você integraria com sua API
     await new Promise(resolve => setTimeout(resolve, 2000));
     
-    alert('Proposta de parceria enviada com sucesso! Nossa equipe analisará seu perfil e entrará em contato em até 48 horas.');
+    alert('Proposta de parceria enviada com sucesso! Nossa equipe analisará seu perfil e entrará em contato.');
     reset();
   };
 
   const beneficiosParceria = [
     'Rede de networking qualificada',
     'Projetos estratégicos e desafiadores',
-    'Remuneração competitiva por projeto',
     'Flexibilidade de horários e local',
+    'Valor agregado ao seu portifólio',
+    'Inovação e metodologia personalizada',
     'Desenvolvimento profissional contínuo',
     'Marca reconhecida no mercado'
   ];
@@ -84,7 +89,6 @@ const Parceiros: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
-            <Handshake className="h-12 w-12 text-blue-600 mr-3" />
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
                 Seja Nosso Parceiro
@@ -187,6 +191,42 @@ const Parceiros: React.FC = () => {
               </div>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                {/* Política de Privacidade */}
+                <div className="mb-4 bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <h3 className="font-semibold mb-2 text-gray-800">Política de Privacidade – Tratamento de Dados Pessoais</h3>
+                  <p className="text-sm text-gray-600 mb-2">
+                    Ao preencher este formulário, você autoriza o tratamento dos seus dados pessoais pela Passione Gente & Gestão Empresarial, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados - LGPD).<br/>
+                    As informações fornecidas serão utilizadas exclusivamente para fins de cadastro em nosso banco de talentos e/ou envio de propostas comerciais relacionadas aos nossos serviços. Seus dados serão armazenados com segurança e não serão compartilhados com terceiros sem o seu consentimento.<br/>
+                    Você poderá, a qualquer momento, solicitar a atualização, correção ou exclusão dos seus dados, conforme os seus direitos garantidos pela LGPD, entrando em contato pelo e-mail: <a href="mailto:contato@passione-rh.com.br" className="text-blue-600 underline">contato@passione-rh.com.br</a>.
+                  </p>
+                  <div className="flex items-center mt-2">
+                    <input
+                      type="checkbox"
+                      id="politicaPrivacidade"
+                      {...register('politicaPrivacidade')}
+                      className="mr-2"
+                    />
+                    <label htmlFor="politicaPrivacidade" className="text-sm text-gray-700 select-none">
+                      Li e concordo com a Política de Privacidade e autorizo o uso dos meus dados pessoais conforme a LGPD.
+                    </label>
+                  </div>
+                  {errors.politicaPrivacidade && (
+                    <p className="mt-1 text-sm text-red-600">{errors.politicaPrivacidade.message}</p>
+                  )}
+                </div>
+                {/* Código comercial */}
+                <div>
+                  <label htmlFor="codigo" className="block text-sm font-medium text-gray-700 mb-2">
+                    CÓD: <span className="text-gray-400">(opcional, uso interno)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="codigo"
+                    {...register('codigo')}
+                    className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors border-gray-300"
+                    placeholder="Código fornecido pela equipe comercial"
+                  />
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Nome */}
                   <div>

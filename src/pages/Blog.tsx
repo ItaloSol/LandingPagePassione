@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, User, ArrowRight, BookOpen, TrendingUp, Users, Target, Lightbulb, Clock, Tag } from 'lucide-react';
+import { Calendar, User, ArrowRight, TrendingUp, Users, Target, Lightbulb, Clock, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Artigo {
@@ -30,10 +30,10 @@ const Blog: React.FC = () => {
   const artigos: Artigo[] = [
     {
       id: 1,
-      titulo: 'O Futuro do RH: Tendências para 2024',
+      titulo: 'O Futuro do RH: Tendências para 2025',
       resumo: 'Descubra as principais tendências que estão moldando o futuro dos recursos humanos e como se preparar para elas.',
       conteudo: `
-        <p>O mundo dos recursos humanos está em constante evolução, e 2024 promete ser um ano de grandes transformações. Neste artigo, exploramos as principais tendências que estão moldando o futuro do RH.</p>
+        <p>O mundo dos recursos humanos está em constante evolução, e 2025 promete ser um ano de grandes transformações. Neste artigo, exploramos as principais tendências que estão moldando o futuro do RH.</p>
         
         <h3>1. Inteligência Artificial e Automação</h3>
         <p>A IA está revolucionando processos de recrutamento, análise de dados de funcionários e personalização de experiências. Empresas que adotam essas tecnologias conseguem maior eficiência e precisão em suas decisões.</p>
@@ -48,7 +48,7 @@ const Blog: React.FC = () => {
         <p>DEI deixou de ser apenas uma tendência para se tornar uma necessidade estratégica para o sucesso empresarial.</p>
       `,
       autor: 'Equipe Passione',
-      data: '15 de Janeiro, 2024',
+      data: '15 de Junho, 2025',
       categoria: 'RH',
       tempoLeitura: '8 min',
       tags: ['IA', 'Futuro', 'Tendências', 'Tecnologia'],
@@ -65,7 +65,7 @@ const Blog: React.FC = () => {
       titulo: 'Liderança Transformacional: Guia Completo',
       resumo: 'Como desenvolver uma liderança que inspira, motiva e transforma equipes e organizações.',
       conteudo: `
-        <p>A liderança transformacional é mais do que um estilo de gestão - é uma filosofia que pode revolucionar organizações inteiras.</p>
+        <p>A liderança transformacional é mais do que um estilo d& Gestão - é uma filosofia que pode revolucionar organizações inteiras.</p>
         
         <h3>Características da Liderança Transformacional</h3>
         <ul>
@@ -79,7 +79,7 @@ const Blog: React.FC = () => {
         <p>O desenvolvimento da liderança transformacional requer autoconhecimento, prática constante e feedback contínuo.</p>
       `,
       autor: 'Dra. Ana Silva',
-      data: '10 de Janeiro, 2024',
+      data: '10 de Junho, 2025',
       categoria: 'Liderança',
       tempoLeitura: '12 min',
       tags: ['Liderança', 'Transformação', 'Gestão', 'Desenvolvimento'],
@@ -110,7 +110,7 @@ const Blog: React.FC = () => {
         <p>Utilize ferramentas como matriz SWOT pessoal, mapeamento de stakeholders e análise de mercado.</p>
       `,
       autor: 'Carlos Mendes',
-      data: '5 de Janeiro, 2024',
+      data: '5 de Junho, 2025',
       categoria: 'Carreira',
       tempoLeitura: '10 min',
       tags: ['Carreira', 'Planejamento', 'Desenvolvimento', 'Estratégia'],
@@ -145,7 +145,7 @@ const Blog: React.FC = () => {
         <p>A resistência à mudança é natural. O segredo está em comunicação transparente, envolvimento das pessoas e demonstração de benefícios.</p>
       `,
       autor: 'Equipe Passione',
-      data: '28 de Dezembro, 2023',
+      data: '28 de junho, 2025',
       categoria: 'Gestão',
       tempoLeitura: '15 min',
       tags: ['Mudança', 'Transformação', 'Liderança', 'Estratégia'],
@@ -176,7 +176,7 @@ const Blog: React.FC = () => {
         <p>Uma cultura forte requer liderança consistente, comunicação clara e alinhamento entre discurso e prática.</p>
       `,
       autor: 'Dra. Maria Santos',
-      data: '20 de Dezembro, 2023',
+      data: '20 de junho, 2025',
       categoria: 'RH',
       tempoLeitura: '11 min',
       tags: ['Cultura', 'Engajamento', 'Valores', 'Desempenho'],
@@ -207,7 +207,7 @@ const Blog: React.FC = () => {
         <p>Entrevistas comportamentais, assessment centers virtuais e avaliações por competências estão redefinindo como selecionamos talentos.</p>
       `,
       autor: 'João Oliveira',
-      data: '15 de Dezembro, 2023',
+      data: '15 de junho, 2025',
       categoria: 'RH',
       tempoLeitura: '9 min',
       tags: ['Recrutamento', 'Tecnologia', 'Inovação', 'Talentos'],
@@ -325,13 +325,12 @@ const Blog: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
-            <BookOpen className="h-12 w-12 text-red-600 mr-3" />
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
                 Blog Passione
               </h1>
               <p className="text-lg text-red-600 font-medium">
-                Insights e tendências em RH e Gestão
+                Insights e tendências em RH & Gestão
               </p>
             </div>
           </div>
@@ -425,7 +424,7 @@ const Blog: React.FC = () => {
         </div>
 
         {/* Newsletter CTA */}
-        <section className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-2xl p-8 md:p-12 text-center">
+        {/* <section className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-2xl p-8 md:p-12 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Receba Nossos Conteúdos
           </h2>
@@ -443,7 +442,7 @@ const Blog: React.FC = () => {
               Cadastrar
             </button>
           </div>
-        </section>
+        </section> */}
 
         {/* CTAs para Formulários */}
         <section className="mt-16">
@@ -456,8 +455,8 @@ const Blog: React.FC = () => {
               className="bg-gradient-to-r from-green-600 to-green-700 text-white p-6 rounded-xl hover:shadow-lg transition-shadow duration-300"
             >
               <Users className="h-8 w-8 mb-4" />
-              <h3 className="text-lg font-bold mb-2">Desenvolva sua Carreira</h3>
-              <p className="text-green-100 mb-4">Envie seu currículo e receba orientação personalizada</p>
+              <h3 className="text-lg font-bold mb-2">Portal de Vagas</h3>
+              <p className="text-green-100 mb-4">Envie seu currículo</p>
               <div className="flex items-center space-x-1 font-medium">
                 <span>Enviar Currículo</span>
                 <ArrowRight className="h-4 w-4" />

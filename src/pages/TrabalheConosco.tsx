@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Heart, Upload, Send, Users, Award, TrendingUp, CheckCircle } from 'lucide-react';
+import { Upload, Send } from 'lucide-react';
 
 // Schema de validação para o formulário de currículo
 const curriculoSchema = z.object({
@@ -11,7 +11,11 @@ const curriculoSchema = z.object({
   whatsapp: z.string().min(10, 'WhatsApp deve ter pelo menos 10 dígitos'),
   areaInteresse: z.string().min(1, 'Selecione uma área de interesse'),
   curriculo: z.any().refine((files) => files?.length > 0, 'Anexe seu currículo'),
-  mensagem: z.string().optional()
+  mensagem: z.string().optional(),
+  codigo: z.string().optional(),
+  politicaPrivacidade: z.literal(true, {
+    errorMap: () => ({ message: 'Você deve concordar com a Política de Privacidade para enviar o formulário.' })
+  })
 });
 
 type CurriculoFormData = z.infer<typeof curriculoSchema>;
@@ -38,21 +42,21 @@ const TrabalheConosco: React.FC = () => {
   };
 
   const areasInteresse = [
+    'Administração e Gestão',
     'Recursos Humanos',
-    'Consultoria Empresarial',
-    'Recrutamento e Seleção',
-    'Treinamento e Desenvolvimento',
-    'Gestão de Pessoas',
-    'Psicologia Organizacional',
-    'Administração',
-    'Gestão Financeira',
-    'Marketing',
-    'Vendas',
-    'Tecnologia da Informação',
-    'Jurídico',
-    'Outros'
+    'Comercial e Vendas',
+    'Marketing e Comunicação',
+    'Financeiro e Contábil',
+    'Tecnologia da Informação (TI)',
+    'Engenharia e Produção',
+    'Logística e Suprimentos',
+    'Jurídica',
+    'Projetos e Processos',
+    'Sustentabilidade e ESG',
+    'Outras'
   ];
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const beneficios = [
     'Ambiente colaborativo e inovador',
     'Oportunidades de crescimento profissional',
@@ -62,6 +66,7 @@ const TrabalheConosco: React.FC = () => {
     'Desenvolvimento contínuo'
   ];
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const competencias = [
     'Visão estratégica e analítica',
     'Comunicação assertiva',
@@ -77,24 +82,19 @@ const TrabalheConosco: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
-            <Heart className="h-12 w-12 text-red-600 mr-3" />
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
-                Trabalhe Conosco
+                Portal de Vagas
               </h1>
-              <p className="text-lg text-red-600 font-medium">
-                Faça parte da transformação
-              </p>
             </div>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Junte-se à nossa equipe de profissionais apaixonados por transformar 
-            a gestão de pessoas e negócios
+          Acreditamos no potencial humano como força estratégica. Envie seu currículo e faça parte de processos seletivos que conectam talento e propósito.
           </p>
         </div>
 
         {/* Cultura da Empresa */}
-        <section className="mb-16">
+        {/* <section className="mb-16">
           <div className="bg-gradient-to-r from-red-50 to-red-100 rounded-2xl p-8 md:p-12">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
               Nossa Cultura e Valores
@@ -130,7 +130,7 @@ const TrabalheConosco: React.FC = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Formulário de Currículo */}
         <section className="mb-16">
@@ -141,11 +141,34 @@ const TrabalheConosco: React.FC = () => {
                   Envie seu Currículo
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Preencha o formulário abaixo e faça parte da nossa equipe
+                  Preencha o formulário abaixo
                 </p>
               </div>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                {/* Política de Privacidade */}
+                <div className="mb-4 bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <h3 className="font-semibold mb-2 text-gray-800">Política de Privacidade – Tratamento de Dados Pessoais</h3>
+                  <p className="text-sm text-gray-600 mb-2">
+                    Ao preencher este formulário, você autoriza o tratamento dos seus dados pessoais pela Passione Gente & Gestão Empresarial, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados - LGPD).<br/>
+                    As informações fornecidas serão utilizadas exclusivamente para fins de cadastro em nosso banco de talentos e/ou envio de propostas comerciais relacionadas aos nossos serviços. Seus dados serão armazenados com segurança e não serão compartilhados com terceiros sem o seu consentimento.<br/>
+                    Você poderá, a qualquer momento, solicitar a atualização, correção ou exclusão dos seus dados, conforme os seus direitos garantidos pela LGPD, entrando em contato pelo e-mail: <a href="mailto:contato@passione-rh.com.br" className="text-red-600 underline">contato@passione-rh.com.br</a>.
+                  </p>
+                  <div className="flex items-center mt-2">
+                    <input
+                      type="checkbox"
+                      id="politicaPrivacidade"
+                      {...register('politicaPrivacidade')}
+                      className="mr-2"
+                    />
+                    <label htmlFor="politicaPrivacidade" className="text-sm text-gray-700">
+                      Li e concordo com a Política de Privacidade e autorizo o uso dos meus dados pessoais conforme a LGPD.
+                    </label>
+                  </div>
+                  {errors.politicaPrivacidade && (
+                    <p className="mt-1 text-sm text-red-600">{errors.politicaPrivacidade.message as string}</p>
+                  )}
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Nome Completo */}
                   <div>
@@ -250,7 +273,7 @@ const TrabalheConosco: React.FC = () => {
                     Formatos aceitos: PDF, DOC, DOCX (máx. 5MB)
                   </p>
                   {errors.curriculo && (
-                    <p className="mt-1 text-sm text-red-600">{errors.curriculo.message}</p>
+                    <p className="mt-1 text-sm text-red-600">{errors.curriculo?.message as string}</p>
                   )}
                 </div>
 
@@ -265,6 +288,20 @@ const TrabalheConosco: React.FC = () => {
                     rows={4}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors"
                     placeholder="Conte-nos um pouco sobre você, suas experiências e motivações..."
+                  />
+                </div>
+
+                {/* Código Comercial */}
+                <div>
+                  <label htmlFor="codigo" className="block text-sm font-medium text-gray-700 mb-2">
+                    CÓD: <span className="text-gray-400 text-xs">(Preenchimento não obrigatório, uso interno Passione)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="codigo"
+                    {...register('codigo')}
+                    className="w-full px-4 py-3 border rounded-lg border-gray-300 focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors"
+                    placeholder="Código fornecido pela equipe comercial (opcional)"
                   />
                 </div>
 
@@ -297,33 +334,40 @@ const TrabalheConosco: React.FC = () => {
         <section className="mb-16">
           <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-              Nosso Processo Seletivo
+              ETAPAS DO PROCESSO SELETIVO
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
               <div className="text-center">
                 <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-red-600">1</span>
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Análise Curricular</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">Análise curricular</h3>
                 <p className="text-sm text-gray-600">Avaliação do perfil e experiências</p>
               </div>
               <div className="text-center">
                 <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-red-600">2</span>
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Entrevista Inicial</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">Entrevista inicial</h3>
                 <p className="text-sm text-gray-600">Conversa sobre motivações e fit cultural</p>
               </div>
               <div className="text-center">
                 <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-red-600">3</span>
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Avaliação Técnica</h3>
-                <p className="text-sm text-gray-600">Teste de competências específicas</p>
+                <h3 className="font-semibold text-gray-900 mb-2">Teste comportamental</h3>
+                <p className="text-sm text-gray-600">Avaliação de perfil comportamental</p>
               </div>
               <div className="text-center">
                 <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-red-600">4</span>
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">Avaliação técnica</h3>
+                <p className="text-sm text-gray-600">Teste de competências específicas</p>
+              </div>
+              <div className="text-center">
+                <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-red-600">5</span>
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Feedback</h3>
                 <p className="text-sm text-gray-600">Retorno sobre o processo e próximos passos</p>
@@ -339,7 +383,7 @@ const TrabalheConosco: React.FC = () => {
               Pronto para fazer a diferença?
             </h2>
             <p className="text-xl mb-8 text-red-100">
-              Sua carreira na consultoria em RH e gestão empresarial começa aqui.
+            A sua trajetória é única e cheia de valor. A oportunidade certa começa quando você acredita no seu potencial.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

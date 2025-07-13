@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Mail, Phone, MapPin, Instagram, Linkedin, Send, Building, User, Briefcase, MessageSquare } from 'lucide-react';
+import { Mail, MessageCircle, Instagram, Linkedin, Send, Building} from 'lucide-react';
 
 // Schema de validação para o formulário empresarial
 const empresaSchema = z.object({
@@ -12,7 +12,11 @@ const empresaSchema = z.object({
   emailCorporativo: z.string().email('E-mail corporativo inválido'),
   whatsapp: z.string().min(10, 'WhatsApp deve ter pelo menos 10 dígitos'),
   servicoInteresse: z.string().min(1, 'Selecione um serviço de interesse'),
-  mensagemDetalhada: z.string().min(10, 'Mensagem deve ter pelo menos 10 caracteres')
+  mensagemDetalhada: z.string().min(10, 'Mensagem deve ter pelo menos 10 caracteres'),
+  politicaPrivacidade: z.literal(true, {
+    errorMap: () => ({ message: 'Você deve concordar com a Política de Privacidade para enviar o formulário.' })
+  }),
+  codigo: z.string().optional()
 });
 
 type EmpresaFormData = z.infer<typeof empresaSchema>;
@@ -34,7 +38,7 @@ const Contato: React.FC = () => {
     // Aqui você integraria com sua API
     await new Promise(resolve => setTimeout(resolve, 2000));
     
-    alert('Solicitação enviada com sucesso! Nossa equipe entrará em contato em até 24 horas.');
+    alert('Solicitação enviada com sucesso! Nossa equipe entrará em contato.');
     reset();
   };
 
@@ -57,31 +61,31 @@ const Contato: React.FC = () => {
 
   const contatos = [
     {
-      icon: Phone,
+      icon: MessageCircle,
       titulo: 'WhatsApp',
-      info: '+55 (11) 99999-9999',
-      link: 'https://wa.me/5511999999999',
+      info: '+55 (61) 9 9152-6116',
+      link: 'https://wa.me/5561991526116',
       cor: 'text-green-600'
     },
     {
       icon: Mail,
       titulo: 'E-mail',
-      info: 'contato@passione.com.br',
-      link: 'mailto:contato@passione.com.br',
+      info: 'contato@passione-rh.com.br',
+      link: 'mailto:contato@passione-rh.com.br',
       cor: 'text-blue-600'
     },
     {
       icon: Instagram,
       titulo: 'Instagram',
-      info: '@passione.gestao',
-      link: 'https://instagram.com/passione.gestao',
+      info: '@passione.rh',
+      link: 'https://instagram.com/passione.rh',
       cor: 'text-pink-600'
     },
     {
       icon: Linkedin,
       titulo: 'LinkedIn',
-      info: 'Passione Consultoria',
-      link: 'https://linkedin.com/company/passione',
+      info: 'Passione Rh',
+      link: 'https://linkedin.com/company/passione-rh',
       cor: 'text-blue-700'
     }
   ];
@@ -114,6 +118,42 @@ const Contato: React.FC = () => {
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              {/* Política de Privacidade */}
+              <div className="mb-4 bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <h3 className="font-semibold mb-2 text-gray-800">Política de Privacidade – Tratamento de Dados Pessoais</h3>
+                <p className="text-sm text-gray-600 mb-2">
+                  Ao preencher este formulário, você autoriza o tratamento dos seus dados pessoais pela Passione Gente & Gestão Empresarial, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados - LGPD).<br/>
+                  As informações fornecidas serão utilizadas exclusivamente para fins de cadastro em nosso banco de talentos e/ou envio de propostas comerciais relacionadas aos nossos serviços. Seus dados serão armazenados com segurança e não serão compartilhados com terceiros sem o seu consentimento.<br/>
+                  Você poderá, a qualquer momento, solicitar a atualização, correção ou exclusão dos seus dados, conforme os seus direitos garantidos pela LGPD, entrando em contato pelo e-mail: <a href="mailto:contato@passione-rh.com.br" className="text-red-600 underline">contato@passione-rh.com.br</a>.
+                </p>
+                <div className="flex items-center mt-2">
+                  <input
+                    type="checkbox"
+                    id="politicaPrivacidade"
+                    {...register('politicaPrivacidade')}
+                    className="mr-2"
+                  />
+                  <label htmlFor="politicaPrivacidade" className="text-sm text-gray-700">
+                    Li e concordo com a Política de Privacidade e autorizo o uso dos meus dados pessoais conforme a LGPD.
+                  </label>
+                </div>
+                {errors.politicaPrivacidade && (
+                  <p className="mt-1 text-sm text-red-600">{errors.politicaPrivacidade.message}</p>
+                )}
+              </div>
+              {/* Código Comercial */}
+              <div>
+                <label htmlFor="codigo" className="block text-sm font-medium text-gray-700 mb-2">
+                  CÓD: <span className="text-gray-400 text-xs">(Opcional - uso interno equipe comercial)</span>
+                </label>
+                <input
+                  type="text"
+                  id="codigo"
+                  {...register('codigo')}
+                  className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors border-gray-300"
+                  placeholder="Código da apresentação (se houver)"
+                />
+              </div>
               {/* Nome da Empresa */}
               <div>
                 <label htmlFor="nomeEmpresa" className="block text-sm font-medium text-gray-700 mb-2">
@@ -365,27 +405,33 @@ const Contato: React.FC = () => {
         <section className="mt-16">
           <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-2xl p-8 md:p-12 text-center">
             <h2 className="text-3xl font-bold mb-4">
-              Pronto para Transformar sua Gestão?
+              Pronto para evoluir sua carreira e alavancar a gestão do seu negócio?
             </h2>
             <p className="text-xl mb-8 text-red-100 max-w-3xl mx-auto">
               Nossa equipe de especialistas está pronta para desenvolver soluções 
               personalizadas que irão revolucionar a gestão de pessoas e negócios da sua empresa.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://wa.me/5511999999999"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200 inline-flex items-center justify-center space-x-2"
-              >
-                <Phone className="h-5 w-5" />
-                <span>WhatsApp Direto</span>
-              </a>
-              <a
+            <a
                 href="/servicos"
                 className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors duration-200"
               >
-                Conheça Nossos Serviços
+                SOU EMPRESA <br></br>
+                Conheça nossos serviços
+              </a>
+              <a
+                href="/trabalhe-conosco"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors duration-200"
+              >
+                SOU CANDIDATO <br></br>
+                Portal de vagas
+              </a>
+              <a
+                href="/parceiros"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors duration-200"
+              >
+                QUERO SER PARCEIRO <br></br>
+                Parceiros
               </a>
             </div>
           </div>

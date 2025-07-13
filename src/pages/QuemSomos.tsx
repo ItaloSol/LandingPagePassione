@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Shield, Target, Eye, Award, CheckCircle, Users, TrendingUp, Lightbulb, BarChart3 } from 'lucide-react';
+import { Heart, Shield, Target, Eye, Award, CheckCircle, Users, Lightbulb, BarChart3 } from 'lucide-react';
 
 const QuemSomos: React.FC = () => {
   const mission = {
@@ -11,7 +11,7 @@ const QuemSomos: React.FC = () => {
   const vision = {
     icon: Eye,
     title: 'Visão',
-    description: 'Ser referência em consultoria de RH e gestão empresarial no Brasil, reconhecida pela excelência técnica e impacto humano.'
+    description: 'Ser referência em consultoria de RH & Gestão empresarial no Brasil, reconhecida pela excelência técnica e impacto humano.'
   };
 
   const values = [
@@ -69,13 +69,12 @@ const QuemSomos: React.FC = () => {
         <section className="mb-20">
           <div className="bg-gradient-to-r from-red-50 to-red-100 rounded-2xl p-8 md:p-12">
             <div className="flex items-center justify-center mb-8">
-              <Heart className="h-16 w-16 text-red-600" />
             </div>
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
-              Passione – Gente e Gestão Empresarial
+              Passione  Gente & Gestão Empresarial
             </h2>
             <p className="text-lg text-gray-700 text-center max-w-4xl mx-auto mb-8">
-              Na Passione – Gente e Gestão Empresarial, desenvolvemos soluções personalizadas 
+              Na Passione  Gente & Gestão Empresarial, desenvolvemos soluções personalizadas 
               para transformar a gestão de pessoas e negócios, sempre com foco estratégico, 
               humano e prático.
             </p>
@@ -168,7 +167,7 @@ const QuemSomos: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="text-lg text-gray-600 mb-8">
-                  O que nos torna únicos no mercado de consultoria em RH e gestão empresarial:
+                  O que nos torna únicos no mercado de consultoria em RH & Gestão empresarial:
                 </p>
                 <ul className="space-y-4">
                   {differentials.map((differential, index) => (
@@ -200,7 +199,7 @@ const QuemSomos: React.FC = () => {
         </section>
 
         {/* Stats */}
-        <section className="mb-20">
+        {/* <section className="mb-20">
           <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-2xl p-8 md:p-12">
             <h2 className="text-3xl font-bold text-center mb-12">
               Resultados que Comprovam Nossa Excelência
@@ -220,7 +219,7 @@ const QuemSomos: React.FC = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* CTA */}
         <section className="text-center">

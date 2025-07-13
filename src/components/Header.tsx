@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Heart } from 'lucide-react';
+import { Menu, X} from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +10,7 @@ const Header: React.FC = () => {
     { name: 'Home', href: '/' },
     { name: 'Quem Somos', href: '/quem-somos' },
     { name: 'Serviços', href: '/servicos' },
-    { name: 'Trabalhe Conosco', href: '/trabalhe-conosco' },
+    { name: 'Portal de Vagas', href: '/trabalhe-conosco' },
     { name: 'Parceiros', href: '/parceiros' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contato', href: '/contato' },
@@ -31,7 +31,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50">
+    <header className="bg-[#1E0549] shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -40,11 +40,7 @@ const Header: React.FC = () => {
             className="flex items-center space-x-2"
             onClick={handleLinkClick}
           >
-            <Heart className="h-8 w-8 text-red-500" />
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-900">Passione</span>
-              <span className="text-xs text-gray-600 -mt-1">Gente e Gestão Empresarial</span>
-            </div>
+            <img src="/logo.png" alt="Passione Logo" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -56,8 +52,8 @@ const Header: React.FC = () => {
                 onClick={handleLinkClick}
                 className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   isActive(item.href)
-                    ? 'text-red-600 border-b-2 border-red-600'
-                    : 'text-gray-700 hover:text-red-600 hover:border-b-2 hover:border-red-600'
+                    ? 'text-white border-b-2 border-white'
+                    : 'text-gray-700 hover:text-white hover:border-b-2 hover:border-white'
                 }`}
               >
                 {item.name}
@@ -68,7 +64,7 @@ const Header: React.FC = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-md text-gray-700 hover:text-red-600 hover:bg-gray-100 transition-colors duration-200"
+            className="md:hidden p-2 rounded-md text-gray-700 hover:text-white hover:bg-gray-100 transition-colors duration-200"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -85,8 +81,8 @@ const Header: React.FC = () => {
                   onClick={handleLinkClick}
                   className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
                     isActive(item.href)
-                      ? 'text-red-600 bg-red-50'
-                      : 'text-gray-700 hover:text-red-600 hover:bg-gray-50'
+                      ? 'text-white bg-white'
+                      : 'text-gray-700 hover:text-white hover:bg-gray-50'
                   }`}
                 >
                   {item.name}

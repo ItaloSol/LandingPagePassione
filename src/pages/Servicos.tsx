@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, Target, Award, TrendingUp, CheckCircle, ArrowRight, Search, Building, Heart, Shield, BarChart3, Lightbulb, Star, Clock, Phone } from 'lucide-react';
+import { Users, Target, Award, TrendingUp, CheckCircle, ArrowRight, Building, Heart, Shield, BarChart3, Lightbulb, Star, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Servico {
@@ -237,7 +237,7 @@ const Servicos: React.FC = () => {
       descricao: 'Implementação de políticas e conformidade legal.',
       detalhes: [
         'Políticas internas e código de conduta',
-        'Conformidade legal e boas práticas de gestão',
+        'Conformidade legal e boas práticas d& Gestão',
         'Estrutura de governança corporativa',
         'Gestão de riscos',
         'Auditoria interna',
@@ -326,12 +326,8 @@ const Servicos: React.FC = () => {
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                <div className="bg-white bg-opacity-10 p-4 rounded-lg">
-                  <Clock className="h-6 w-6 mb-2" />
-                  <div className="text-sm opacity-80">Duração</div>
-                  <div className="font-semibold">{servicoSelecionado.duracao}</div>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+               
                 <div className="bg-white bg-opacity-10 p-4 rounded-lg">
                   <Users className="h-6 w-6 mb-2" />
                   <div className="text-sm opacity-80">Categoria</div>
@@ -394,7 +390,7 @@ const Servicos: React.FC = () => {
                       <ArrowRight className="h-5 w-5" />
                     </Link>
                     <a
-                      href="https://wa.me/5511999999999"
+                      href="https://wa.me/5561991526116"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="border-2 border-red-600 text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition-colors duration-200 inline-flex items-center justify-center space-x-2"
@@ -421,7 +417,7 @@ const Servicos: React.FC = () => {
             Nossos Serviços
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Soluções completas em Recursos Humanos e Gestão Empresarial 
+            Soluções completas em Recursos Humanos & Gestão Empresarial 
             para transformar sua organização
           </p>
         </div>
@@ -481,10 +477,7 @@ const Servicos: React.FC = () => {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <div className="text-sm text-gray-500">
-                    <Clock className="h-4 w-4 inline mr-1" />
-                    {servico.duracao}
-                  </div>
+                  
                   <div className="flex items-center space-x-1 text-red-600 font-medium group-hover:text-red-700">
                     <span>Ver detalhes</span>
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -582,7 +575,7 @@ const Servicos: React.FC = () => {
                 <ArrowRight className="h-5 w-5" />
               </Link>
               <a
-                href="https://wa.me/5511999999999"
+                href="https://wa.me/5561991526116"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors duration-200 inline-flex items-center justify-center space-x-2"

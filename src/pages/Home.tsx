@@ -31,7 +31,11 @@ const Home: React.FC = () => {
     'Equipe registrada em CRP, CRA e demais conselhos profissionais',
     'Metodologia pautada por indicadores de desempenho (KPIs)',
     'Experiência em setores corporativo, público, terceiro setor e educacional',
-    'Clube de Profissionais para networking e suporte contínuo'
+    'Clube de profissionais para networking e suporte contínuo',
+    'Diagnóstico estratégico',
+    'Cultura de melhoria contínua',
+    'Metodologia consolidada e inovadora',
+    'Cocriação com liderança'
   ];
 
   const values = [
@@ -63,7 +67,7 @@ const Home: React.FC = () => {
       <section 
         className="relative bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white py-20 min-h-[80vh] flex items-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(220, 38, 38, 0.4), rgba(185, 28, 28, 0.5)), url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop')`,
+          backgroundImage: `linear-gradient(rgba(30, 5, 73, 0.4), rgba(30, 5, 73, 0.5)), url('/mesa_reuniao.webp')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -74,15 +78,15 @@ const Home: React.FC = () => {
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-2xl">
               Transformamos a gestão de
-              <span className="text-red-200"> pessoas </span>
+              <span className="text-[#C3996B]"> pessoas </span>
               e
-              <span className="text-red-200"> negócios</span>
+              <span className="text-[#C3996B]"> negócios</span>
             </h1>
             <h2 className="text-xl md:text-2xl mb-8 text-red-100 max-w-4xl mx-auto font-medium drop-shadow-xl">
               com soluções estratégicas e humanas
             </h2>
             <p className="text-lg md:text-xl mb-12 text-red-100 max-w-3xl mx-auto drop-shadow-lg">
-              Consultoria completa em RH e Gestão Empresarial para resultados concretos
+              Consultoria completa em RH & Gestão Empresarial para resultados concretos
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -114,7 +118,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Passione – Gente e Gestão Empresarial
+              Passione  Gente & Gestão Empresarial
             </h2>
             <p className="text-xl text-gray-700 max-w-4xl mx-auto mb-8">
               Desenvolvemos soluções personalizadas para transformar a gestão de pessoas 
@@ -123,8 +127,7 @@ const Home: React.FC = () => {
             <div className="bg-blue-50 border-l-4 border-blue-400 p-6 max-w-4xl mx-auto">
               <p className="text-lg text-blue-800 font-medium">
                 <Shield className="inline h-6 w-6 mr-2" />
-                Todos os nossos serviços são executados por profissionais formados e 
-                registrados em conselhos de classe, garantindo segurança técnica e legal a cada projeto.
+                Nossos serviços asseguram rigorosa conformidade técnica e legal em cada projeto executado.
               </p>
             </div>
           </div>
@@ -206,7 +209,7 @@ const Home: React.FC = () => {
                 Nossos Diferenciais
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                O que nos torna únicos no mercado de consultoria em RH e gestão empresarial.
+                O que nos torna únicos no mercado de consultoria em RH & Gestão empresarial.
               </p>
               <ul className="space-y-4">
                 {differentials.map((differential, index) => (
@@ -219,7 +222,7 @@ const Home: React.FC = () => {
                 ))}
               </ul>
             </div>
-            <div className="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl">
+            {/* <div className="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl">
               <div className="text-center">
                 <div className="text-4xl font-bold text-red-600 mb-2">500+</div>
                 <div className="text-gray-600 mb-6">Empresas atendidas</div>
@@ -230,7 +233,7 @@ const Home: React.FC = () => {
                 <div className="text-4xl font-bold text-red-600 mb-2">98%</div>
                 <div className="text-gray-600">Taxa de satisfação</div>
               </div>
-            </div>
+            </div>  */}
           </div>
         </div>
       </section>
@@ -239,10 +242,10 @@ const Home: React.FC = () => {
       <section className="bg-red-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Pronto para transformar sua gestão?
+          Pronto para evoluir sua carreira e alavancar a gestão do seu negócio?
           </h2>
           <p className="text-xl mb-8 text-red-100">
-            Entre em contato conosco e descubra como podemos ajudar sua empresa a crescer.
+          Fale conosco e descubra como podemos apoiar sua evolução profissional e empresarial.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -256,7 +259,7 @@ const Home: React.FC = () => {
               to="/trabalhe-conosco"
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors duration-200"
             >
-              Trabalhe Conosco
+              Portal de Vagas
             </Link>
           </div>
         </div>

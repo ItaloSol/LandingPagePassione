@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Mail, Phone, MapPin, Instagram, Linkedin } from 'lucide-react';
+import { Heart, Mail, Phone, MapPin, Instagram, Linkedin, Facebook, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
@@ -12,28 +12,27 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-[#1E0549] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo e Descrição */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <Heart className="h-8 w-8 text-red-400" />
-              <div className="flex flex-col">
-                <span className="text-xl font-bold">Passione</span>
-                <span className="text-sm text-gray-300">Gente e Gestão Empresarial</span>
-              </div>
+              <img src="/logo.png" alt="Passione Logo" className="h-12 w-auto" />
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
               Desenvolvemos soluções personalizadas para transformar a gestão de pessoas 
               e negócios, sempre com foco estratégico, humano e prático.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-red-400 transition-colors duration-200">
+              <a href="https://instagram.com/passione.rh" className="text-gray-300 hover:text-red-400 transition-colors duration-200">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-red-400 transition-colors duration-200">
+              <a href="https://linkedin.com/company/passione-rh" className="text-gray-300 hover:text-red-400 transition-colors duration-200">
                 <Linkedin className="h-6 w-6" />
+              </a>
+              <a href="https://www.facebook.com/passione.rh" className="text-gray-300 hover:text-red-400 transition-colors duration-200">
+                <Facebook className="h-6 w-6" />
               </a>
             </div>
           </div>
@@ -48,7 +47,7 @@ const Footer: React.FC = () => {
                   onClick={handleLinkClick}
                   className="text-gray-300 hover:text-white transition-colors duration-200"
                 >
-                  Quem Somos
+                  QUEM SOMOS
                 </Link>
               </li>
               <li>
@@ -66,7 +65,7 @@ const Footer: React.FC = () => {
                   onClick={handleLinkClick}
                   className="text-gray-300 hover:text-white transition-colors duration-200"
                 >
-                  Trabalhe Conosco
+                  Portal de Vagas
                 </Link>
               </li>
               <li>
@@ -95,16 +94,16 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-4">Fale com a Passione</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-red-400" />
-                <span className="text-gray-300">WhatsApp</span>
+                <MessageCircle className="h-5 w-5 text-red-400" />
+                <span className="text-gray-300">61 99152 6116</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-red-400" />
-                <span className="text-gray-300">contato@passione.com.br</span>
+                <span className="text-gray-300">contato@passione-rh.com.br</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Instagram className="h-5 w-5 text-red-400" />
-                <span className="text-gray-300">@passione.gestao</span>
+                <span className="text-gray-300">@passione.rh</span>
               </div>
             </div>
           </div>
@@ -112,7 +111,7 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © 2024 Passione - Gente e Gestão Empresarial. Todos os direitos reservados.
+            © 2024 PASSIONE GENTE & GESTÃO EMPRESARIAL. Todos os direitos reservados.
           </p>
         </div>
       </div>
