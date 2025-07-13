@@ -120,7 +120,7 @@ const Servicos: React.FC = () => {
     {
       id: 'plano-cargos-salarios',
       categoria: 'RH',
-      titulo: 'Plano de Cargos, Salários & Carreira',
+      titulo: 'Plano de cargos, salários & carreira',
       descricao: 'Estruturação de cargos e desenvolvimento de planos de carreira.',
       detalhes: [
         'Estruturação ou revisão de cargos e funções',
@@ -143,7 +143,7 @@ const Servicos: React.FC = () => {
     {
       id: 'gestao-desempenho',
       categoria: 'RH',
-      titulo: 'Gestão de Desempenho',
+      titulo: 'Gestão de desempenho',
       descricao: 'Sistema completo de avaliação e desenvolvimento de desempenho.',
       detalhes: [
         'Avaliações 90º, 180º e 360º',
@@ -166,7 +166,7 @@ const Servicos: React.FC = () => {
     {
       id: 'clima-engajamento',
       categoria: 'RH',
-      titulo: 'Clima Organizacional & Engajamento',
+      titulo: 'Clima organizacional & engajamento',
       descricao: 'Pesquisas e ações para melhoria do clima e engajamento.',
       detalhes: [
         'Aplicação de pesquisas internas',
@@ -191,7 +191,7 @@ const Servicos: React.FC = () => {
     {
       id: 'planejamento-estrategico',
       categoria: 'Gestao',
-      titulo: 'Planejamento Estratégico',
+      titulo: 'Planejamento estratégico',
       descricao: 'Definição e implementação de estratégias empresariais.',
       detalhes: [
         'Definição de missão, visão, valores e objetivos',
@@ -214,7 +214,7 @@ const Servicos: React.FC = () => {
     {
       id: 'mapeamento-processos',
       categoria: 'Gestao',
-      titulo: 'Mapeamento & Otimização de Processos',
+      titulo: 'Mapeamento & otimização de processos',
       descricao: 'Análise e melhoria de processos organizacionais.',
       detalhes: [
         'Diagnóstico e redesenho de processos',
@@ -237,7 +237,7 @@ const Servicos: React.FC = () => {
     {
       id: 'gestao-financeira',
       categoria: 'Gestao',
-      titulo: 'Gestão Financeira & Indicadores',
+      titulo: 'Gestão financeira & indicadores',
       descricao: 'Estruturação financeira e criação de indicadores de performance.',
       detalhes: [
         'Estruturação financeira e criação de KPIs',
@@ -260,7 +260,7 @@ const Servicos: React.FC = () => {
     {
       id: 'governanca-compliance',
       categoria: 'Gestao',
-      titulo: 'Governança & Compliance',
+      titulo: 'Governança & compliance',
       descricao: 'Implementação de políticas e conformidade legal.',
       detalhes: [
         'Políticas internas e código de conduta',
@@ -283,7 +283,7 @@ const Servicos: React.FC = () => {
     {
       id: 'mentoria-executiva',
       categoria: 'Gestao',
-      titulo: 'Mentoria & Aconselhamento Executivo',
+      titulo: 'Mentoria & aconselhamento executivo',
       descricao: 'Suporte estratégico personalizado para líderes e equipes.',
       detalhes: [
         'Suporte estratégico a líderes e equipes',
@@ -311,17 +311,17 @@ const Servicos: React.FC = () => {
 
   const palestrasECursos = [
     {
-      titulo: 'Palestras Corporativas',
+      titulo: 'Palestras corporativas',
       temas: ['Liderança', 'Cultura Organizacional', 'Protagonismo', 'Diversidade'],
       descricao: 'Palestras inspiradoras e educativas para eventos corporativos'
     },
     {
-      titulo: 'Cursos Livres',
+      titulo: 'Cursos livres',
       temas: ['Capacitações técnicas', 'Desenvolvimento comportamental', 'Presencial ou online'],
       descricao: 'Cursos personalizados sob demanda para sua equipe'
     },
     {
-      titulo: 'Desenvolvimento de Carreira',
+      titulo: 'Desenvolvimento de carreira',
       temas: ['Orientação profissional', 'Planejamento de carreira', 'Recolocação', 'Entrevistas simuladas'],
       descricao: 'Suporte completo para desenvolvimento profissional'
     }
@@ -348,7 +348,7 @@ const Servicos: React.FC = () => {
                   <servicoSelecionado.icon className="h-8 w-8" />
                 </div>
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-bold">{servicoSelecionado.titulo}</h1>
+                  <h1 className="text-3xl md:text-4xl  font-bold">{servicoSelecionado.titulo}</h1>
                   <p className="text-xl opacity-90 mt-2">{servicoSelecionado.descricao}</p>
                 </div>
               </div>
@@ -358,7 +358,7 @@ const Servicos: React.FC = () => {
                 <div className="bg-white bg-opacity-10 p-4 rounded-lg">
                   <Users className="h-6 w-6 mb-2" />
                   <div className="text-sm opacity-80">Categoria</div>
-                  <div className="font-semibold">{servicoSelecionado.categoria === 'RH' ? 'Recursos Humanos' : 'Gestão Empresarial'}</div>
+                  <div className="font-semibold">{servicoSelecionado.categoria === 'RH' ? 'Recursos humanos' : 'Gestão empresarial'}</div>
                 </div>
                 <div className="bg-white bg-opacity-10 p-4 rounded-lg">
                   <Star className="h-6 w-6 mb-2" />
@@ -445,7 +445,7 @@ const Servicos: React.FC = () => {
             Nossos Serviços
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Soluções completas em Recursos Humanos & Gestão Empresarial
+            Soluções completas em Recursos humanos & Gestão empresarial
             para transformar sua organização
           </p>
         </div>
@@ -462,7 +462,7 @@ const Servicos: React.FC = () => {
                 }`}
             >
               {categoria === 'Todos' ? 'Todos os Serviços' :
-                categoria === 'RH' ? 'Recursos Humanos' : 'Gestão Empresarial'}
+                categoria === 'RH' ? 'Recursos humanos' : 'Gestão empresarial'}
             </button>
           ))}
         </div>
@@ -481,10 +481,10 @@ const Servicos: React.FC = () => {
                     <servico.icon className="h-6 w-6" />
                   </div>
                   <span className="text-sm font-medium opacity-90">
-                    {servico.categoria === 'RH' ? 'Recursos Humanos' : 'Gestão Empresarial'}
+                    {servico.categoria === 'RH' ? 'Recursos humanos' : 'Gestão empresarial'}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold mb-2">{servico.titulo}</h3>
+                <h3 className="text-xl uppercase font-bold mb-2">{servico.titulo}</h3>
                 <p className="text-sm opacity-90">{servico.descricao}</p>
               </div>
 
@@ -560,7 +560,7 @@ const Servicos: React.FC = () => {
                 <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Shield className="h-8 w-8 text-red-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Profissionais Registrados</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">Profissionais registrados</h3>
                 <p className="text-sm text-gray-600">Equipe com registro em conselhos de classe</p>
               </div>
               <div className="text-center">
@@ -574,14 +574,14 @@ const Servicos: React.FC = () => {
                 <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Heart className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Atendimento Personalizado</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">Atendimento personalizado</h3>
                 <p className="text-sm text-gray-600">Soluções 100% customizadas</p>
               </div>
               <div className="text-center">
                 <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Building className="h-8 w-8 text-purple-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Experiência Multissetorial</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">Experiência multissetorial</h3>
                 <p className="text-sm text-gray-600">Corporativo, público, terceiro setor</p>
               </div>
             </div>

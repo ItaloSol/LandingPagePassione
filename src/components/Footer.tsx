@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Mail, Phone, MapPin, Instagram, Linkedin, Facebook, MessageCircle } from 'lucide-react';
+import {  Mail,  Instagram, Linkedin, Facebook, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
@@ -39,8 +39,8 @@ const Footer: React.FC = () => {
 
           {/* Links Rápidos */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-semibold mb-4">LINKS RÁPIDOS</h3>
+            <ul className="space-y-2 uppercase">
               <li>
                 <Link 
                   to="/quem-somos" 
@@ -91,11 +91,11 @@ const Footer: React.FC = () => {
 
           {/* Fale com a Passione */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Fale com a Passione</h3>
+            <h3 className="text-lg font-semibold uppercase mb-4">Fale com a Passione</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <MessageCircle className="h-5 w-5 text-red-400" />
-                <span className="text-gray-300">61 99152 6116</span>
+                <span className="text-gray-300">(61) 99152 6116</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-red-400" />

@@ -42,7 +42,7 @@ const QuemSomos: React.FC = () => {
     'Equipe registrada em CRP, CRA e demais conselhos profissionais',
     'Metodologia pautada por indicadores de desempenho (KPIs)',
     'Experiência em setores corporativo, público, terceiro setor e educacional',
-    'Clube de Profissionais para networking e suporte contínuo'
+    'Clube de profissionais para networking e suporte contínuo'
   ];
 
   const sectors = [

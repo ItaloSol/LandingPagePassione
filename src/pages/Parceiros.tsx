@@ -55,12 +55,12 @@ const Parceiros: React.FC = () => {
   const areasColaboracao = [
     {
       icon: Users,
-      titulo: 'Recursos Humanos',
+      titulo: 'Recursos humanos',
       descricao: 'Recrutamento, seleção, gestão de pessoas e desenvolvimento organizacional'
     },
     {
       icon: TrendingUp,
-      titulo: 'Consultoria Empresarial',
+      titulo: 'Consultoria empresarial',
       descricao: 'Planejamento estratégico, processos, gestão financeira e governança'
     },
     {
@@ -399,7 +399,7 @@ const Parceiros: React.FC = () => {
                 <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-blue-600">1</span>
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Análise de Perfil</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">Análise de perfil</h3>
                 <p className="text-sm text-gray-600">Avaliação da experiência e competências</p>
               </div>
               <div className="text-center">
@@ -413,7 +413,7 @@ const Parceiros: React.FC = () => {
                 <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-blue-600">3</span>
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Projeto Piloto</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">Projeto piloto</h3>
                 <p className="text-sm text-gray-600">Colaboração em projeto inicial</p>
               </div>
               <div className="text-center">

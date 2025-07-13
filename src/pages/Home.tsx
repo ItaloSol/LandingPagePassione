@@ -21,7 +21,7 @@ const Home: React.FC = () => {
     },
     {
       icon: TrendingUp,
-      title: 'Consultoria Empresarial',
+      title: 'Consultoria empresarial',
       description: 'Planejamento estratégico, otimização de processos, gestão financeira e governança corporativa.'
     }
   ];
@@ -142,7 +142,7 @@ const Home: React.FC = () => {
               Nossas Soluções
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Oferecemos soluções completas em RH e consultoria empresarial
+              Oferecemos soluções completas em RH e Consultoria empresarial
             </p>
           </div>
 
