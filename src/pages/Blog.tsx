@@ -119,7 +119,7 @@ const Blog: React.FC = () => {
         tipo: 'curriculo',
         titulo: 'Orientação de Carreira',
         descricao: 'Precisa de ajuda para planejar sua carreira? Envie seu currículo e receba orientação personalizada.',
-        link: '/trabalhe-conosco'
+        link: '/portal-vagas'
       }
     },
     {
@@ -451,7 +451,7 @@ const Blog: React.FC = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Link
-              to="/trabalhe-conosco"
+              to="/portal-vagas"
               className="bg-gradient-to-r from-green-600 to-green-700 text-white p-6 rounded-xl hover:shadow-lg transition-shadow duration-300"
             >
               <Users className="h-8 w-8 mb-4" />

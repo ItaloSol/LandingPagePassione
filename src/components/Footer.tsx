@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link 
-                  to="/trabalhe-conosco" 
+                  to="/portal-vagas" 
                   onClick={handleLinkClick}
                   className="text-gray-300 hover:text-white transition-colors duration-200"
                 >

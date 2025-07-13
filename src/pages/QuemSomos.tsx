@@ -74,9 +74,18 @@ const QuemSomos: React.FC = () => {
               Passione  Gente & Gestão Empresarial
             </h2>
             <p className="text-lg text-gray-700 text-center max-w-4xl mx-auto mb-8">
-              Na Passione  Gente & Gestão Empresarial, desenvolvemos soluções personalizadas 
-              para transformar a gestão de pessoas e negócios, sempre com foco estratégico, 
-              humano e prático.
+              A Passione Gente & Gestão Empresarial é uma consultoria que tem o propósito de impulsionar organizações por meio da valorização das pessoas e da excelência na gestão.
+              <br /><br />
+              Acreditamos que os melhores resultados são alcançados quando estratégia e cultura caminham lado a lado e quando as pessoas são vistas como protagonistas do crescimento organizacional.
+              <br /><br />
+              Atuamos com foco em gestão de pessoas, desenvolvimento de lideranças, modelagem de processos, planejamento estratégico e performance empresarial, sempre com uma abordagem personalizada, analítica e profundamente humana.
+              <br /><br />
+              Nosso diferencial está em unir paixão por gente, metodologia baseada em boas práticas de gestão e compromisso com entregas que geram impacto real e mensurável.
+              <br /><br />
+              Mais do que oferecer soluções, construímos parcerias estratégicas baseadas em confiança, escuta ativa, ética e inovação contínua. Cada projeto é conduzido com clareza de propósito, atenção ao contexto do cliente e foco em resultados sustentáveis.
+              <br /><br />
+              Na Passione, acreditamos que transformar empresas é, antes de tudo, desenvolver pessoas.
+              E que uma gestão feita com alma, intenção e método é capaz de mover organizações para um novo patamar de maturidade, performance e relevância.
             </p>
             <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
               <div className="flex items-start space-x-3">

@@ -10,7 +10,7 @@ const Header: React.FC = () => {
     { name: 'Home', href: '/' },
     { name: 'Quem Somos', href: '/quem-somos' },
     { name: 'Serviços', href: '/servicos' },
-    { name: 'Portal de Vagas', href: '/trabalhe-conosco' },
+    { name: 'Portal de Vagas', href: '/portal-vagas' },
     { name: 'Parceiros', href: '/parceiros' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contato', href: '/contato' },

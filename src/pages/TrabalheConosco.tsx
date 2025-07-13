@@ -21,6 +21,7 @@ const curriculoSchema = z.object({
 type CurriculoFormData = z.infer<typeof curriculoSchema>;
 
 const TrabalheConosco: React.FC = () => {
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = React.useState(false);
   const {
     register,
     handleSubmit,
@@ -148,12 +149,29 @@ const TrabalheConosco: React.FC = () => {
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 {/* Política de Privacidade */}
                 <div className="mb-4 bg-gray-50 rounded-lg p-4 border border-gray-200">
-                  <h3 className="font-semibold mb-2 text-gray-800">Política de Privacidade – Tratamento de Dados Pessoais</h3>
-                  <p className="text-sm text-gray-600 mb-2">
-                    Ao preencher este formulário, você autoriza o tratamento dos seus dados pessoais pela Passione Gente & Gestão Empresarial, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados - LGPD).<br/>
-                    As informações fornecidas serão utilizadas exclusivamente para fins de cadastro em nosso banco de talentos e/ou envio de propostas comerciais relacionadas aos nossos serviços. Seus dados serão armazenados com segurança e não serão compartilhados com terceiros sem o seu consentimento.<br/>
-                    Você poderá, a qualquer momento, solicitar a atualização, correção ou exclusão dos seus dados, conforme os seus direitos garantidos pela LGPD, entrando em contato pelo e-mail: <a href="mailto:contato@passione-rh.com.br" className="text-red-600 underline">contato@passione-rh.com.br</a>.
-                  </p>
+                  <div 
+                    className="flex items-center justify-between cursor-pointer" 
+                    onClick={() => setShowPrivacyPolicy(!showPrivacyPolicy)}
+                  >
+                    <h3 className="font-semibold text-gray-800">Política de Privacidade – Tratamento de Dados Pessoais</h3>
+                    <svg 
+                      className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${showPrivacyPolicy ? 'rotate-180' : ''}`} 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                  {showPrivacyPolicy && (
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-600 mb-2">
+                        Ao preencher este formulário, você autoriza o tratamento dos seus dados pessoais pela Passione Gente & Gestão Empresarial, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados - LGPD).<br/>
+                        As informações fornecidas serão utilizadas exclusivamente para fins de cadastro em nosso banco de talentos e/ou envio de propostas comerciais relacionadas aos nossos serviços. Seus dados serão armazenados com segurança e não serão compartilhados com terceiros sem o seu consentimento.<br/>
+                        Você poderá, a qualquer momento, solicitar a atualização, correção ou exclusão dos seus dados, conforme os seus direitos garantidos pela LGPD, entrando em contato pelo e-mail: <a href="mailto:contato@passione-rh.com.br" className="text-red-600 underline">contato@passione-rh.com.br</a>.
+                      </p>
+                    </div>
+                  )}
                   <div className="flex items-center mt-2">
                     <input
                       type="checkbox"

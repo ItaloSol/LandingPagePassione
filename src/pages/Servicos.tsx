@@ -1,6 +1,25 @@
-import React, { useState } from 'react';
-import { Users, Target, Award, TrendingUp, CheckCircle, ArrowRight, Building, Heart, Shield, BarChart3, Lightbulb, Star, Phone } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Users, Target, Award, TrendingUp, CheckCircle, ArrowRight, Building, Heart, Shield, BarChart3, Lightbulb, Star, Phone, Link } from 'lucide-react';
+import { useState } from 'react';
+// Schema de validação para o formulário empresarial
+const empresaSchema = z.object({
+  nomeEmpresa: z.string().min(2, 'Nome da empresa deve ter pelo menos 2 caracteres'),
+  responsavel: z.string().min(2, 'Nome do responsável deve ter pelo menos 2 caracteres'),
+  cargo: z.string().min(2, 'Cargo deve ter pelo menos 2 caracteres'),
+  emailCorporativo: z.string().email('E-mail corporativo inválido'),
+  whatsapp: z.string().min(10, 'WhatsApp deve ter pelo menos 10 dígitos'),
+  servicoInteresse: z.string().min(1, 'Selecione um serviço de interesse'),
+  mensagemDetalhada: z.string().min(10, 'Mensagem deve ter pelo menos 10 caracteres'),
+  politicaPrivacidade: z.literal(true, {
+    errorMap: () => ({ message: 'Você deve concordar com a Política de Privacidade para enviar o formulário.' })
+  }),
+  codigo: z.string().optional()
+});
+
+type EmpresaFormData = z.infer<typeof empresaSchema>;
+
 
 interface Servico {
   id: string;
@@ -16,6 +35,14 @@ interface Servico {
 }
 
 const Servicos: React.FC = () => {
+
+  useForm<EmpresaFormData>({
+    resolver: zodResolver(empresaSchema)
+  });
+
+
+
+
   const [categoriaAtiva, setCategoriaAtiva] = useState<'Todos' | 'RH' | 'Gestao'>('Todos');
   const [servicoSelecionado, setServicoSelecionado] = useState<Servico | null>(null);
 
@@ -278,8 +305,8 @@ const Servicos: React.FC = () => {
     }
   ];
 
-  const servicosFiltrados = categoriaAtiva === 'Todos' 
-    ? servicos 
+  const servicosFiltrados = categoriaAtiva === 'Todos'
+    ? servicos
     : servicos.filter(servico => servico.categoria === categoriaAtiva);
 
   const palestrasECursos = [
@@ -325,9 +352,9 @@ const Servicos: React.FC = () => {
                   <p className="text-xl opacity-90 mt-2">{servicoSelecionado.descricao}</p>
                 </div>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-               
+
                 <div className="bg-white bg-opacity-10 p-4 rounded-lg">
                   <Users className="h-6 w-6 mb-2" />
                   <div className="text-sm opacity-80">Categoria</div>
@@ -408,6 +435,7 @@ const Servicos: React.FC = () => {
     );
   }
 
+
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -417,7 +445,7 @@ const Servicos: React.FC = () => {
             Nossos Serviços
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Soluções completas em Recursos Humanos & Gestão Empresarial 
+            Soluções completas em Recursos Humanos & Gestão Empresarial
             para transformar sua organização
           </p>
         </div>
@@ -428,14 +456,13 @@ const Servicos: React.FC = () => {
             <button
               key={categoria}
               onClick={() => setCategoriaAtiva(categoria)}
-              className={`px-6 py-3 rounded-full font-medium transition-colors duration-200 ${
-                categoriaAtiva === categoria
+              className={`px-6 py-3 rounded-full font-medium transition-colors duration-200 ${categoriaAtiva === categoria
                   ? 'bg-red-600 text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
+                }`}
             >
-              {categoria === 'Todos' ? 'Todos os Serviços' : 
-               categoria === 'RH' ? 'Recursos Humanos' : 'Gestão Empresarial'}
+              {categoria === 'Todos' ? 'Todos os Serviços' :
+                categoria === 'RH' ? 'Recursos Humanos' : 'Gestão Empresarial'}
             </button>
           ))}
         </div>
@@ -477,7 +504,7 @@ const Servicos: React.FC = () => {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  
+
                   <div className="flex items-center space-x-1 text-red-600 font-medium group-hover:text-red-700">
                     <span>Ver detalhes</span>
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -488,9 +515,14 @@ const Servicos: React.FC = () => {
           ))}
         </div>
 
+
+
+
         {/* Palestras, Cursos & Desenvolvimento */}
         <section className="mb-16">
-          <div className="text-center mb-12">
+
+          <div className="text-center my-8 mb-12">
+
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Palestras, Cursos & Desenvolvimento
             </h2>
@@ -498,7 +530,7 @@ const Servicos: React.FC = () => {
               Capacitação e desenvolvimento para sua equipe
             </p>
           </div>
-
+         
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {palestrasECursos.map((item, index) => (
               <div key={index} className="bg-white rounded-xl shadow-lg p-8 border-t-4 border-purple-500">
@@ -563,17 +595,11 @@ const Servicos: React.FC = () => {
               Pronto para Transformar sua Empresa?
             </h2>
             <p className="text-xl mb-8 text-red-100 max-w-3xl mx-auto">
-              Solicite uma proposta personalizada e descubra como nossos serviços 
+              Solicite uma proposta personalizada e descubra como nossos serviços
               podem impulsionar os resultados da sua organização.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contato"
-                className="bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200 inline-flex items-center justify-center space-x-2"
-              >
-                <span>Solicitar Proposta</span>
-                <ArrowRight className="h-5 w-5" />
-              </Link>
+             
               <a
                 href="https://wa.me/5561991526116"
                 target="_blank"
