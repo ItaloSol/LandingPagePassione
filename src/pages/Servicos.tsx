@@ -420,7 +420,7 @@ const Servicos: React.FC = () => {
                       href="https://wa.me/5561991526116"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="border-2 border-red-600 text-[#1E0549] px-8 py-3 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition-colors duration-200 inline-flex items-center justify-center space-x-2"
+                      className="border-2 border-red-600 text-[#1E0549] px-8 py-3 rounded-lg font-semibold hover:bg-red-600 hover:text-white uppercase transition-colors duration-200 inline-flex items-center justify-center space-x-2"
                     >
                       <Phone className="h-5 w-5" />
                       <span>WhatsApp</span>
@@ -604,7 +604,7 @@ const Servicos: React.FC = () => {
                 href="https://wa.me/5561991526116"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200 inline-flex items-center justify-center space-x-2"
+                className="border-2 border-white uppercase text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200 inline-flex items-center justify-center space-x-2"
               >
                 <Phone className="h-5 w-5" />
                 <span>WhatsApp Direto</span>

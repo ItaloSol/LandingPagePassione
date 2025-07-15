@@ -203,7 +203,7 @@ const Home: React.FC = () => {
       {/* Differentials Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 items-center">
             <div className="text-center mb-16" >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Nossos Diferenciais
@@ -211,10 +211,10 @@ const Home: React.FC = () => {
               <p className="text-lg text-gray-600 mb-8">
                 O que nos torna únicos no mercado de consultoria em RH & Gestão Empresarial.
               </p>
-              <ul className="space-y-4">
+              <ul className="space-y-4 w-full max-w-xl mx-auto">
                 {differentials.map((differential, index) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <div className="bg-green-100 rounded-full p-1 mt-1">
+                  <li key={index} className="flex items-start">
+                    <div className="bg-green-100 rounded-full p-1 mr-3 flex-shrink-0">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                     </div>
                     <span className="text-gray-700 font-medium">{differential}</span>

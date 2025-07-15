@@ -36,7 +36,7 @@ const Parceiros: React.FC = () => {
       const formData = new FormData();
       Object.entries(data).forEach(([key, value]) => {
         if (value !== undefined && value !== null && value !== '') {
-          formData.append(key, value);
+          formData.append(key, typeof value === 'boolean' ? value.toString() : value);
         }
       });
       formData.append('Created', new Date().toISOString());
@@ -468,13 +468,13 @@ const Parceiros: React.FC = () => {
                   e.preventDefault();
                   document.getElementById('nome')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-[#1E0549]/10 transition-colors duration-200"
+                className="bg-white uppercase text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-[#1E0549]/10 transition-colors duration-200"
               >
                 Enviar Proposta Agora
               </a>
               <a
                 href="/contato"
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-200"
+                className="border-2 uppercase border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-200"
               >
                 Fale Conosco
               </a>

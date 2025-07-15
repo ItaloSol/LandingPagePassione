@@ -112,7 +112,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-3">
               <img src="/linkedin.png" alt="LinkedIn" className="h-6 w-6" />
-                <span className="text-gray-300">@passione-rh</span>
+                <span className="text-gray-300">@passione rh</span>
               </div>
               <div className="flex items-center space-x-3">
               <img src="/facebook.png" alt="facebook" className="h-6 w-6" />

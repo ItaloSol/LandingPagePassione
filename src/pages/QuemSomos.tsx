@@ -91,9 +91,7 @@ const QuemSomos: React.FC = () => {
               <div className="flex items-start space-x-3">
                 <Shield className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
                 <p className="text-lg text-[#1E0549] font-medium">
-                  <strong>Diferencial ético e técnico:</strong> Todos os nossos serviços são 
-                  executados por profissionais formados e registrados em conselhos de classe, 
-                  garantindo segurança técnica e legal a cada projeto.
+                Nossos serviços asseguram rigorosa conformidade técnica e legal em cada projeto executado.
                 </p>
               </div>
             </div>
@@ -242,13 +240,13 @@ const QuemSomos: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contato"
-                className="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
+                className="bg-red-600 uppercase text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
               >
                 Fale Conosco
               </a>
               <a
                 href="/servicos"
-                className="border-2 border-red-600 text-[#1E0549] px-8 py-3 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition-colors duration-200"
+                className="border-2 uppercase border-red-600 text-[#1E0549] px-8 py-3 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition-colors duration-200"
               >
                 Conheça Nossos Serviços
               </a>

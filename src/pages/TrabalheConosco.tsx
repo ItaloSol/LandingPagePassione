@@ -477,13 +477,13 @@ const TrabalheConosco: React.FC = () => {
                   e.preventDefault();
                   document.getElementById('nome')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-white text-[#1E0549] px-8 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200"
+                className="bg-white text-[#1E0549] uppercase px-8 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200"
               >
                 Enviar Currículo Agora
               </a>
               <a
                 href="/contato"
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200"
+                className="border-2 border-white uppercase text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200"
               >
                 Fale Conosco
               </a>

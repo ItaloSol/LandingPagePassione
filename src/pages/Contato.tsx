@@ -42,8 +42,8 @@ const Contato: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-12 flex flex-col items-center justify-center">
+      <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -55,12 +55,12 @@ const Contato: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="flex flex-col lg:flex-row justify-center gap-12 w-full">
           {/* Formulário Empresarial */}
          
 
           {/* Informações de Contato */}
-          <div className="space-y-8">
+          <div className="space-y-8 w-full max-w-2xl">
             {/* Contatos Diretos */}
             <div className="bg-gray-50 rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
@@ -125,8 +125,8 @@ const Contato: React.FC = () => {
         </div>
 
         {/* CTA Section */}
-        <section className="mt-16">
-          <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-2xl p-8 md:p-12 text-center">
+        <section className="mt-16 w-full">
+          <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-2xl p-8 md:p-12 text-center mx-auto max-w-5xl">
             <h2 className="text-3xl font-bold mb-4">
               Pronto para evoluir sua carreira e alavancar a gestão do seu negócio?
             </h2>
@@ -134,7 +134,7 @@ const Contato: React.FC = () => {
               Nossa equipe de especialistas está pronta para desenvolver soluções 
               personalizadas que irão revolucionar a gestão de pessoas e negócios da sua empresa.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
                 href="/servicos"
                 className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200"
