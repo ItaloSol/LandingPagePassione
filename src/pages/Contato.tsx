@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, MessageCircle, Instagram, Linkedin} from 'lucide-react';
+import { Mail, MessageCircle, Instagram, Linkedin, Facebook} from 'lucide-react';
 
 // Schema de validação para o formulário empresarial
 
@@ -35,8 +35,15 @@ const Contato: React.FC = () => {
     {
       icon: Linkedin,
       titulo: 'LinkedIn',
-      info: 'Passione Rh',
+      info: 'Passione RH',
       link: 'https://linkedin.com/company/passione-rh',
+      cor: 'text-blue-700'
+    },
+    {
+      icon: Facebook,
+      titulo: 'LinkedIn',
+      info: 'passione.rh',
+      link: 'https://www.facebook.com/passione.rh',
       cor: 'text-blue-700'
     }
   ];
