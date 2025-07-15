@@ -1,5 +1,4 @@
 import React from 'react';
-import {  Mail,  Instagram, Linkedin, Facebook, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
@@ -18,21 +17,27 @@ const Footer: React.FC = () => {
           {/* Logo e Descrição */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <img src="/logo.png" alt="Passione Logo" className="h-12 w-auto" />
+              <img src="/logotipo.png" alt="Passione Logo" className="h-20 w-auto" />
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
               Desenvolvemos soluções personalizadas para transformar a gestão de pessoas 
               e negócios, sempre com foco estratégico, humano e prático.
             </p>
             <div className="flex space-x-4">
+            <a href="https://wa.me/5561991526116" className="text-gray-300 hover:text-red-400 transition-colors duration-200">
+                <img src="/whatsapp.png" alt="whatsapp" className="h-6 w-6" />
+              </a>
+              <a href="mailto:contato@passione-rh.com.br" className="text-gray-300 hover:text-red-400 transition-colors duration-200">
+                <img src="/e-mail.png" alt="e-mail" className="h-6 w-6" />
+              </a>
               <a href="https://instagram.com/passione.rh" className="text-gray-300 hover:text-red-400 transition-colors duration-200">
-                <Instagram className="h-6 w-6" />
+                <img src="/instagram.png" alt="Instagram" className="h-6 w-6" />
               </a>
               <a href="https://linkedin.com/company/passione-rh" className="text-gray-300 hover:text-red-400 transition-colors duration-200">
-                <Linkedin className="h-6 w-6" />
+                <img src="/linkedin.png" alt="LinkedIn" className="h-6 w-6" />
               </a>
               <a href="https://www.facebook.com/passione.rh" className="text-gray-300 hover:text-red-400 transition-colors duration-200">
-                <Facebook className="h-6 w-6" />
+                <img src="/facebook.png" alt="Facebook" className="h-6 w-6" />
               </a>
             </div>
           </div>
@@ -83,7 +88,7 @@ const Footer: React.FC = () => {
                   onClick={handleLinkClick}
                   className="text-gray-300 hover:text-white transition-colors duration-200"
                 >
-                  Política de Privacidade
+                  Política de privacidade
                 </Link>
               </li>
             </ul>
@@ -94,15 +99,23 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold uppercase mb-4">Fale com a Passione</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <MessageCircle className="h-5 w-5 text-red-400" />
+              <img src="/whatsapp.png" alt="whatsapp" className="h-6 w-6" />
                 <span className="text-gray-300">(61) 99152 6116</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-red-400" />
+              <img src="/e-mail.png" alt="e-mail" className="h-6 w-6" />
                 <span className="text-gray-300">contato@passione-rh.com.br</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Instagram className="h-5 w-5 text-red-400" />
+              <img src="/instagram.png" alt="Instagram" className="h-6 w-6" />
+                <span className="text-gray-300">@passione.rh</span>
+              </div>
+              <div className="flex items-center space-x-3">
+              <img src="/linkedin.png" alt="LinkedIn" className="h-6 w-6" />
+                <span className="text-gray-300">@passione-rh</span>
+              </div>
+              <div className="flex items-center space-x-3">
+              <img src="/facebook.png" alt="facebook" className="h-6 w-6" />
                 <span className="text-gray-300">@passione.rh</span>
               </div>
             </div>

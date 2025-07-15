@@ -257,7 +257,7 @@ const Blog: React.FC = () => {
           {/* Botão Voltar */}
           <button
             onClick={() => setArtigoSelecionado(null)}
-            className="mb-8 flex items-center space-x-2 text-red-600 hover:text-red-700 transition-colors duration-200"
+            className="mb-8 flex items-center space-x-2 text-[#1E0549] hover:text-red-700 transition-colors duration-200"
           >
             <ArrowRight className="h-5 w-5 rotate-180" />
             <span>Voltar aos artigos</span>
@@ -272,7 +272,7 @@ const Blog: React.FC = () => {
             />
             <div className="p-8">
               <div className="flex items-center space-x-4 mb-6 text-sm text-gray-500">
-                <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full font-medium">
+                <span className="bg-[#1E0549]/10 text-[#1E0549] px-3 py-1 rounded-full font-medium">
                   {artigoSelecionado.categoria}
                 </span>
                 <div className="flex items-center space-x-1">
@@ -329,7 +329,7 @@ const Blog: React.FC = () => {
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
                 Blog Passione
               </h1>
-              <p className="text-lg text-red-600 font-medium">
+              <p className="text-lg text-[#1E0549] font-medium">
                 Insights e tendências em RH & Gestão
               </p>
             </div>
@@ -372,7 +372,7 @@ const Blog: React.FC = () => {
               />
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-[#1E0549]/10 text-[#1E0549] px-3 py-1 rounded-full text-sm font-medium">
                     {artigo.categoria}
                   </span>
                   <div className="flex items-center space-x-1 text-sm text-gray-500">
@@ -412,7 +412,7 @@ const Blog: React.FC = () => {
                         </span>
                       ))}
                     </div>
-                    <div className="flex items-center space-x-1 text-red-600 font-medium">
+                    <div className="flex items-center space-x-1 text-[#1E0549] font-medium">
                       <span>Ler mais</span>
                       <ArrowRight className="h-4 w-4" />
                     </div>
@@ -438,7 +438,7 @@ const Blog: React.FC = () => {
               placeholder="Seu melhor e-mail"
               className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-300 focus:outline-none"
             />
-            <button className="bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200">
+            <button className="bg-white text-[#1E0549] px-6 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200">
               Cadastrar
             </button>
           </div>
@@ -458,7 +458,7 @@ const Blog: React.FC = () => {
               <h3 className="text-lg font-bold mb-2">Portal de Vagas</h3>
               <p className="text-green-100 mb-4">Envie seu currículo</p>
               <div className="flex items-center space-x-1 font-medium">
-                <span>Enviar Currículo</span>
+                <span className="uppercase">Enviar Currículo</span>
                 <ArrowRight className="h-4 w-4" />
               </div>
             </Link>

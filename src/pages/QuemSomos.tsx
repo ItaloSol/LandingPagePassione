@@ -11,7 +11,7 @@ const QuemSomos: React.FC = () => {
   const vision = {
     icon: Eye,
     title: 'Visão',
-    description: 'Ser referência em consultoria de RH & Gestão empresarial no Brasil, reconhecida pela excelência técnica e impacto humano.'
+    description: 'Ser referência em consultoria de RH & Gestão Empresarial no Brasil, reconhecida pela excelência técnica e impacto humano.'
   };
 
   const values = [
@@ -67,13 +67,13 @@ const QuemSomos: React.FC = () => {
 
         {/* About Section */}
         <section className="mb-20">
-          <div className="bg-gradient-to-r from-red-50 to-red-100 rounded-2xl p-8 md:p-12">
+          <div className="bg-gradient-to-r from-[#1E0549]/10 to-[#1E0549]/20 rounded-2xl p-8 md:p-12">
             <div className="flex items-center justify-center mb-8">
             </div>
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
               Passione  Gente & Gestão Empresarial
             </h2>
-            <p className="text-lg text-gray-700 text-center max-w-4xl mx-auto mb-8">
+            <p className="text-lg text- text-justify max-w-4xl mx-auto mb-8">
               A Passione Gente & Gestão Empresarial é uma consultoria que tem o propósito de impulsionar organizações por meio da valorização das pessoas e da excelência na gestão.
               <br /><br />
               Acreditamos que os melhores resultados são alcançados quando estratégia e cultura caminham lado a lado e quando as pessoas são vistas como protagonistas do crescimento organizacional.
@@ -87,10 +87,10 @@ const QuemSomos: React.FC = () => {
               Na Passione, acreditamos que transformar empresas é, antes de tudo, desenvolver pessoas.
               E que uma gestão feita com alma, intenção e método é capaz de mover organizações para um novo patamar de maturidade, performance e relevância.
             </p>
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
+            <div className="bg-[#1E0549]/10 border-l-4 border-[#1E0549] p-6 rounded-r-lg">
               <div className="flex items-start space-x-3">
                 <Shield className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
-                <p className="text-lg text-blue-800 font-medium">
+                <p className="text-lg text-[#1E0549] font-medium">
                   <strong>Diferencial ético e técnico:</strong> Todos os nossos serviços são 
                   executados por profissionais formados e registrados em conselhos de classe, 
                   garantindo segurança técnica e legal a cada projeto.
@@ -104,10 +104,10 @@ const QuemSomos: React.FC = () => {
         <section className="mb-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Mission */}
-            <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-red-500">
+            <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-[#1E0549]/50">
               <div className="flex items-center mb-6">
-                <div className="bg-red-100 p-3 rounded-lg mr-4">
-                  <mission.icon className="h-8 w-8 text-red-600" />
+                <div className="bg-[#1E0549]/10 p-3 rounded-lg mr-4">
+                  <mission.icon className="h-8 w-8 text-[#1E0549]" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">{mission.title}</h3>
               </div>
@@ -149,8 +149,8 @@ const QuemSomos: React.FC = () => {
                 className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="flex items-start space-x-4">
-                  <div className="bg-red-100 p-3 rounded-lg flex-shrink-0">
-                    <value.icon className="h-6 w-6 text-red-600" />
+                  <div className="bg-[#1E0549]/10 p-3 rounded-lg flex-shrink-0">
+                    <value.icon className="h-6 w-6 text-[#1E0549]" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -176,7 +176,7 @@ const QuemSomos: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="text-lg text-gray-600 mb-8">
-                  O que nos torna únicos no mercado de consultoria em RH & Gestão empresarial:
+                  O que nos torna únicos no mercado de consultoria em RH & Gestão Empresarial:
                 </p>
                 <ul className="space-y-4">
                   {differentials.map((differential, index) => (
@@ -194,10 +194,10 @@ const QuemSomos: React.FC = () => {
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
                   Setores de Atuação
                 </h3>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid uppercase grid-cols-2 gap-4">
                   {sectors.map((sector, index) => (
                     <div key={index} className="text-center p-4 bg-gray-50 rounded-lg">
-                      <sector.icon className="h-8 w-8 text-red-600 mx-auto mb-2" />
+                      <sector.icon className="h-8 w-8 text-[#1E0549] mx-auto mb-2" />
                       <span className="text-sm font-medium text-gray-700">{sector.name}</span>
                     </div>
                   ))}
@@ -232,7 +232,7 @@ const QuemSomos: React.FC = () => {
 
         {/* CTA */}
         <section className="text-center">
-          <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-red-500">
+          <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-[#1E0549]/50">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               Quer conhecer mais sobre nossa metodologia?
             </h2>
@@ -248,7 +248,7 @@ const QuemSomos: React.FC = () => {
               </a>
               <a
                 href="/servicos"
-                className="border-2 border-red-600 text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition-colors duration-200"
+                className="border-2 border-red-600 text-[#1E0549] px-8 py-3 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition-colors duration-200"
               >
                 Conheça Nossos Serviços
               </a>

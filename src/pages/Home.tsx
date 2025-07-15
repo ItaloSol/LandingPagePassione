@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Users, Target, Award, TrendingUp, CheckCircle, Heart, Shield, BarChart3, Lightbulb } from 'lucide-react';
+import {  Users, Target, Award, TrendingUp, CheckCircle, Heart, Shield, BarChart3, Lightbulb } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
@@ -21,7 +21,7 @@ const Home: React.FC = () => {
     },
     {
       icon: TrendingUp,
-      title: 'Consultoria empresarial',
+      title: 'Consultoria Empresarial',
       description: 'Planejamento estratégico, otimização de processos, gestão financeira e governança corporativa.'
     }
   ];
@@ -67,7 +67,7 @@ const Home: React.FC = () => {
       <section 
         className="relative bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white py-20 min-h-[80vh] flex items-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(30, 5, 73, 0.4), rgba(30, 5, 73, 0.5)), url('/mesa_reuniao.webp')`,
+          backgroundImage: `linear-gradient(rgba(30, 5, 73, 0.4), rgba(30, 5, 73, 0.4)), url('/mesa_reuniao.webp')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -78,9 +78,9 @@ const Home: React.FC = () => {
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-2xl">
               Transformamos a gestão de
-              <span className="text-[#C3996B]"> pessoas </span>
+              pessoas
               e
-              <span className="text-[#C3996B]"> negócios</span>
+              negócios
             </h1>
             <h2 className="text-xl md:text-2xl mb-8 text-red-100 max-w-4xl mx-auto font-medium drop-shadow-xl">
               com soluções estratégicas e humanas
@@ -91,14 +91,14 @@ const Home: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contato"
-                className="bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-red-50 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="bg-white text-[#1E0549] px-8 py-4 rounded-lg font-semibold hover:bg-red-50 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 <span>Quero Contratar</span>
-                <ArrowRight className="h-5 w-5" />
+                
               </Link>
               <Link
                 to="/portal-vagas"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 Enviar Currículo
               </Link>
@@ -114,7 +114,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="pt-10 pb-1 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -124,8 +124,8 @@ const Home: React.FC = () => {
               Desenvolvemos soluções personalizadas para transformar a gestão de pessoas 
               e negócios, sempre com foco estratégico, humano e prático.
             </p>
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-6 max-w-4xl mx-auto">
-              <p className="text-lg text-blue-800 font-medium">
+            <div className="bg-[#1E0549]/10 border-l-4 border-[#1E0549] p-6 max-w-4xl mx-auto">
+              <p className="text-lg text-[#1E0549] font-medium">
                 <Shield className="inline h-6 w-6 mr-2" />
                 Nossos serviços asseguram rigorosa conformidade técnica e legal em cada projeto executado.
               </p>
@@ -135,14 +135,14 @@ const Home: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20">
+      <section className="py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Nossas Soluções
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Oferecemos soluções completas em RH e Consultoria empresarial
+              Oferecemos soluções completas em RH e Consultoria Empresarial
             </p>
           </div>
 
@@ -150,10 +150,10 @@ const Home: React.FC = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-red-500"
+                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-[#1E0549]/50"
               >
-                <div className="bg-red-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <service.icon className="h-6 w-6 text-red-600" />
+                <div className="bg-[#1E0549]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                  <service.icon className="h-6 w-6 text-[#1E0549]" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   {service.title}
@@ -185,8 +185,8 @@ const Home: React.FC = () => {
                 key={index}
                 className="text-center"
               >
-                <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <value.icon className="h-8 w-8 text-red-600" />
+                <div className="bg-[#1E0549]/10 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
+                  <value.icon className="h-8 w-8 text-[#1E0549]" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {value.title}
@@ -204,12 +204,12 @@ const Home: React.FC = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="text-center mb-16" >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Nossos Diferenciais
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                O que nos torna únicos no mercado de consultoria em RH & Gestão empresarial.
+                O que nos torna únicos no mercado de consultoria em RH & Gestão Empresarial.
               </p>
               <ul className="space-y-4">
                 {differentials.map((differential, index) => (
@@ -222,15 +222,15 @@ const Home: React.FC = () => {
                 ))}
               </ul>
             </div>
-            {/* <div className="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl">
+            {/* <div className="bg-gradient-to-br from-[#1E0549]/10 to-[#1E0549]/20 p-8 rounded-2xl">
               <div className="text-center">
-                <div className="text-4xl font-bold text-red-600 mb-2">500+</div>
+                <div className="text-4xl font-bold text-[#1E0549] mb-2">500+</div>
                 <div className="text-gray-600 mb-6">Empresas atendidas</div>
                 
-                <div className="text-4xl font-bold text-red-600 mb-2">10k+</div>
+                <div className="text-4xl font-bold text-[#1E0549] mb-2">10k+</div>
                 <div className="text-gray-600 mb-6">Profissionais capacitados</div>
                 
-                <div className="text-4xl font-bold text-red-600 mb-2">98%</div>
+                <div className="text-4xl font-bold text-[#1E0549] mb-2">98%</div>
                 <div className="text-gray-600">Taxa de satisfação</div>
               </div>
             </div>  */}
@@ -250,14 +250,14 @@ const Home: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contato"
-              className="bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200 inline-flex items-center justify-center space-x-2"
+              className="bg-white text-[#1E0549] px-8 py-4 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200 inline-flex items-center justify-center space-x-2"
             >
               <span>Solicitar Proposta</span>
-              <ArrowRight className="h-5 w-5" />
+              
             </Link>
             <Link
               to="/portal-vagas"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors duration-200"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200"
             >
               Portal de Vagas
             </Link>

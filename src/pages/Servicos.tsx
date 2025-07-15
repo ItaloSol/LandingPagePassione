@@ -12,8 +12,8 @@ const empresaSchema = z.object({
   whatsapp: z.string().min(10, 'WhatsApp deve ter pelo menos 10 dígitos'),
   servicoInteresse: z.string().min(1, 'Selecione um serviço de interesse'),
   mensagemDetalhada: z.string().min(10, 'Mensagem deve ter pelo menos 10 caracteres'),
-  politicaPrivacidade: z.literal(true, {
-    errorMap: () => ({ message: 'Você deve concordar com a Política de Privacidade para enviar o formulário.' })
+  politicaprivacidade: z.literal(true, {
+    errorMap: () => ({ message: 'Você deve concordar com a Política de privacidade para enviar o formulário.' })
   }),
   codigo: z.string().optional()
 });
@@ -334,7 +334,7 @@ const Servicos: React.FC = () => {
           {/* Botão Voltar */}
           <button
             onClick={() => setServicoSelecionado(null)}
-            className="mb-8 flex items-center space-x-2 text-red-600 hover:text-red-700 transition-colors duration-200"
+            className="mb-8 flex items-center space-x-2 text-[#1E0549] hover:text-red-700 transition-colors duration-200"
           >
             <ArrowRight className="h-5 w-5 rotate-180" />
             <span>Voltar aos serviços</span>
@@ -358,7 +358,7 @@ const Servicos: React.FC = () => {
                 <div className="bg-white bg-opacity-10 p-4 rounded-lg">
                   <Users className="h-6 w-6 mb-2" />
                   <div className="text-sm opacity-80">Categoria</div>
-                  <div className="font-semibold">{servicoSelecionado.categoria === 'RH' ? 'Recursos humanos' : 'Gestão empresarial'}</div>
+                  <div className="font-semibold">{servicoSelecionado.categoria === 'RH' ? 'Recursos Humanos' : 'Gestão Empresarial'}</div>
                 </div>
                 <div className="bg-white bg-opacity-10 p-4 rounded-lg">
                   <Star className="h-6 w-6 mb-2" />
@@ -414,13 +414,13 @@ const Servicos: React.FC = () => {
                       className="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200 inline-flex items-center justify-center space-x-2"
                     >
                       <span>Solicitar Proposta</span>
-                      <ArrowRight className="h-5 w-5" />
+                      
                     </Link>
                     <a
                       href="https://wa.me/5561991526116"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="border-2 border-red-600 text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition-colors duration-200 inline-flex items-center justify-center space-x-2"
+                      className="border-2 border-red-600 text-[#1E0549] px-8 py-3 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition-colors duration-200 inline-flex items-center justify-center space-x-2"
                     >
                       <Phone className="h-5 w-5" />
                       <span>WhatsApp</span>
@@ -445,7 +445,7 @@ const Servicos: React.FC = () => {
             Nossos Serviços
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Soluções completas em Recursos humanos & Gestão empresarial
+            Soluções completas em Recursos Humanos & Gestão Empresarial
             para transformar sua organização
           </p>
         </div>
@@ -462,7 +462,7 @@ const Servicos: React.FC = () => {
                 }`}
             >
               {categoria === 'Todos' ? 'Todos os Serviços' :
-                categoria === 'RH' ? 'Recursos humanos' : 'Gestão empresarial'}
+                categoria === 'RH' ? 'Recursos Humanos' : 'Gestão Empresarial'}
             </button>
           ))}
         </div>
@@ -481,7 +481,7 @@ const Servicos: React.FC = () => {
                     <servico.icon className="h-6 w-6" />
                   </div>
                   <span className="text-sm font-medium opacity-90">
-                    {servico.categoria === 'RH' ? 'Recursos humanos' : 'Gestão empresarial'}
+                    {servico.categoria === 'RH' ? 'Recursos Humanos' : 'Gestão Empresarial'}
                   </span>
                 </div>
                 <h3 className="text-xl uppercase font-bold mb-2">{servico.titulo}</h3>
@@ -505,7 +505,7 @@ const Servicos: React.FC = () => {
 
                 <div className="flex items-center justify-between">
 
-                  <div className="flex items-center space-x-1 text-red-600 font-medium group-hover:text-red-700">
+                  <div className="flex items-center space-x-1 text-[#1E0549] font-medium group-hover:text-red-700">
                     <span>Ver detalhes</span>
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -557,8 +557,8 @@ const Servicos: React.FC = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="h-8 w-8 text-red-600" />
+                <div className="bg-[#1E0549]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Shield className="h-8 w-8 text-[#1E0549]" />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Profissionais registrados</h3>
                 <p className="text-sm text-gray-600">Equipe com registro em conselhos de classe</p>
@@ -604,7 +604,7 @@ const Servicos: React.FC = () => {
                 href="https://wa.me/5561991526116"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors duration-200 inline-flex items-center justify-center space-x-2"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200 inline-flex items-center justify-center space-x-2"
               >
                 <Phone className="h-5 w-5" />
                 <span>WhatsApp Direto</span>

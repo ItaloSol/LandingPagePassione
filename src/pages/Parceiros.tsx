@@ -12,8 +12,8 @@ const parceiroSchema = z.object({
   whatsapp: z.string().min(10, 'WhatsApp deve ter pelo menos 10 dígitos'),
   email: z.string().email('E-mail inválido'),
   mensagemApresentacao: z.string().min(50, 'Mensagem deve ter pelo menos 50 caracteres'),
-  politicaPrivacidade: z.literal(true, {
-    errorMap: () => ({ message: 'Você deve concordar com a Política de Privacidade para enviar o formulário.' })
+  politicaprivacidade: z.literal(true, {
+    errorMap: () => ({ message: 'Você deve concordar com a Política de privacidade para enviar o formulário.' })
   }),
   codigo: z.string().optional()
 });
@@ -32,21 +32,45 @@ const Parceiros: React.FC = () => {
   });
 
   const onSubmit = async (data: ParceiroFormData) => {
-    // Simular envio do formulário
-    console.log('Dados do formulário de parceiro:', data);
-    
-    // Aqui você integraria com sua API
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    alert('Proposta de parceria enviada com sucesso! Nossa equipe analisará seu perfil e entrará em contato.');
-    reset();
+    try {
+      const formData = new FormData();
+      Object.entries(data).forEach(([key, value]) => {
+        if (value !== undefined && value !== null && value !== '') {
+          formData.append(key, value);
+        }
+      });
+      formData.append('Created', new Date().toISOString());
+      formData.append('source', 'Parceria');
+      
+      const response = await fetch('https://api.sheetmonkey.io/form/4GNMHEQJVDe2pZbbn5DF3o', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        alert('Proposta de parceria enviada com sucesso! Nossa equipe analisará seu perfil e entrará em contato.');
+        reset();
+      } else {
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Falha ao enviar formulário');
+        } else {
+          const text = await response.text();
+          throw new Error(`O servidor retornou um erro: ${response.status} ${response.statusText}`);
+        }
+      }
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
+      alert(`Ocorreu um erro ao enviar sua proposta: ${error instanceof Error ? error.message : 'Erro desconhecido'}. Por favor, verifique os dados e tente novamente.`);
+    }
   };
 
   const beneficiosParceria = [
     'Rede de networking qualificada',
     'Projetos estratégicos e desafiadores',
     'Flexibilidade de horários e local',
-    'Valor agregado ao seu portifólio',
+    'Valor agregado ao seu portfólio',
     'Inovação e metodologia personalizada',
     'Desenvolvimento profissional contínuo',
     'Marca reconhecida no mercado'
@@ -55,12 +79,12 @@ const Parceiros: React.FC = () => {
   const areasColaboracao = [
     {
       icon: Users,
-      titulo: 'Recursos humanos',
+      titulo: 'Recursos Humanos',
       descricao: 'Recrutamento, seleção, gestão de pessoas e desenvolvimento organizacional'
     },
     {
       icon: TrendingUp,
-      titulo: 'Consultoria empresarial',
+      titulo: 'Consultoria Empresarial',
       descricao: 'Planejamento estratégico, processos, gestão financeira e governança'
     },
     {
@@ -192,13 +216,144 @@ const Parceiros: React.FC = () => {
               </div>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                {/* Política de Privacidade */}
-                <div className="mb-4 bg-gray-50 rounded-lg p-4 border border-gray-200">
+                
+                {/* Código comercial */}
+                <div>
+                  <label htmlFor="codigo" className="block text-sm font-medium text-gray-700 mb-2">
+                    CÓD: <span className="text-gray-400">(opcional, uso interno)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="codigo"
+                    {...register('codigo')}
+                    className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors border-gray-300"
+                    placeholder="Código fornecido pela equipe comercial"
+                  />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Nome */}
+                  <div>
+                    <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-2">
+                      Nome completo *
+                    </label>
+                    <input
+                      type="text"
+                      id="nome"
+                      {...register('nome')}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
+                        errors.nome ? 'border-[#1E0549]/50' : 'border-gray-300'
+                      }`}
+                      placeholder="Seu nome completo"
+                    />
+                    {errors.nome && (
+                      <p className="mt-1 text-sm text-[#1E0549]">{errors.nome.message}</p>
+                    )}
+                  </div>
+
+                  {/* Profissão */}
+                  <div>
+                    <label htmlFor="profissao" className="block text-sm font-medium text-gray-700 mb-2">
+                      Profissão/Especialidade *
+                    </label>
+                    <input
+                      type="text"
+                      id="profissao"
+                      {...register('profissao')}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
+                        errors.profissao ? 'border-[#1E0549]/50' : 'border-gray-300'
+                      }`}
+                      placeholder="Ex: Psicólogo Organizacional, Consultor RH, etc."
+                    />
+                    {errors.profissao && (
+                      <p className="mt-1 text-sm text-[#1E0549]">{errors.profissao.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* LinkedIn/Portfólio */}
+                <div>
+                  <label htmlFor="linkedinPortfolio" className="block text-sm font-medium text-gray-700 mb-2">
+                    LinkedIn ou portfólio *
+                  </label>
+                  <input
+                    type="url"
+                    id="linkedinPortfolio"
+                    {...register('linkedinPortfolio')}
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
+                      errors.linkedinPortfolio ? 'border-[#1E0549]/50' : 'border-gray-300'
+                    }`}
+                    placeholder="https://linkedin.com/in/seuperfil ou https://seuportfolio.com"
+                  />
+                  {errors.linkedinPortfolio && (
+                    <p className="mt-1 text-sm text-[#1E0549]">{errors.linkedinPortfolio.message}</p>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* WhatsApp */}
+                  <div>
+                    <label htmlFor="whatsapp" className="block text-sm font-medium text-gray-700 mb-2">
+                      WhatsApp *
+                    </label>
+                    <input
+                      type="tel"
+                      id="whatsapp"
+                      {...register('whatsapp')}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
+                        errors.whatsapp ? 'border-[#1E0549]/50' : 'border-gray-300'
+                      }`}
+                      placeholder="(11) 99999-9999"
+                    />
+                    {errors.whatsapp && (
+                      <p className="mt-1 text-sm text-[#1E0549]">{errors.whatsapp.message}</p>
+                    )}
+                  </div>
+
+                  {/* E-mail */}
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      E-mail *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      {...register('email')}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
+                        errors.email ? 'border-[#1E0549]/50' : 'border-gray-300'
+                      }`}
+                      placeholder="seu@email.com"
+                    />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-[#1E0549]">{errors.email.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Mensagem de Apresentação */}
+                <div>
+                  <label htmlFor="mensagemApresentacao" className="block text-sm font-medium text-gray-700 mb-2">
+                    Mensagem de apresentação *
+                  </label>
+                  <textarea
+                    id="mensagemApresentacao"
+                    {...register('mensagemApresentacao')}
+                    rows={6}
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
+                      errors.mensagemApresentacao ? 'border-[#1E0549]/50' : 'border-gray-300'
+                    }`}
+                    placeholder="Apresente-se! Conte sobre sua experiência profissional, principais competências, projetos relevantes, áreas de especialização e como você pode contribuir com a Passione. Inclua também sua disponibilidade e expectativas para a parceria..."
+                  />
+                  {errors.mensagemApresentacao && (
+                    <p className="mt-1 text-sm text-[#1E0549]">{errors.mensagemApresentacao.message}</p>
+                  )}
+                </div>
+{/* Política de privacidade */}
+<div className="mb-4 bg-gray-50 rounded-lg p-4 border border-gray-200">
                   <div 
                     className="flex items-center justify-between cursor-pointer" 
                     onClick={() => setShowPrivacyPolicy(!showPrivacyPolicy)}
                   >
-                    <h3 className="font-semibold text-gray-800">Política de Privacidade – Tratamento de Dados Pessoais</h3>
+                    <h3 className="font-semibold text-gray-800">Política de privacidade – Tratamento de dados pessoais</h3>
                     <svg 
                       className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${showPrivacyPolicy ? 'rotate-180' : ''}`} 
                       fill="none" 
@@ -220,151 +375,20 @@ const Parceiros: React.FC = () => {
                   <div className="flex items-center mt-2">
                     <input
                       type="checkbox"
-                      id="politicaPrivacidade"
-                      {...register('politicaPrivacidade')}
+                      id="politicaprivacidade"
+                      {...register('politicaprivacidade')}
                       className="mr-2"
                     />
-                    <label htmlFor="politicaPrivacidade" className="text-sm text-gray-700 select-none">
-                      Li e concordo com a Política de Privacidade e autorizo o uso dos meus dados pessoais conforme a LGPD.
+                    <label htmlFor="politicaprivacidade" className="text-sm text-gray-700 select-none">
+                      Li e concordo com a Política de privacidade e autorizo o uso dos meus dados pessoais conforme a LGPD.
                     </label>
                   </div>
-                  {errors.politicaPrivacidade && (
-                    <p className="mt-1 text-sm text-red-600">{errors.politicaPrivacidade.message}</p>
+                  {errors.politicaprivacidade && (
+                    <p className="mt-1 text-sm text-[#1E0549]">{errors.politicaprivacidade.message}</p>
                   )}
                 </div>
-                {/* Código comercial */}
-                <div>
-                  <label htmlFor="codigo" className="block text-sm font-medium text-gray-700 mb-2">
-                    CÓD: <span className="text-gray-400">(opcional, uso interno)</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="codigo"
-                    {...register('codigo')}
-                    className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors border-gray-300"
-                    placeholder="Código fornecido pela equipe comercial"
-                  />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Nome */}
-                  <div>
-                    <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-2">
-                      Nome Completo *
-                    </label>
-                    <input
-                      type="text"
-                      id="nome"
-                      {...register('nome')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
-                        errors.nome ? 'border-red-500' : 'border-gray-300'
-                      }`}
-                      placeholder="Seu nome completo"
-                    />
-                    {errors.nome && (
-                      <p className="mt-1 text-sm text-red-600">{errors.nome.message}</p>
-                    )}
-                  </div>
-
-                  {/* Profissão */}
-                  <div>
-                    <label htmlFor="profissao" className="block text-sm font-medium text-gray-700 mb-2">
-                      Profissão/Especialidade *
-                    </label>
-                    <input
-                      type="text"
-                      id="profissao"
-                      {...register('profissao')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
-                        errors.profissao ? 'border-red-500' : 'border-gray-300'
-                      }`}
-                      placeholder="Ex: Psicólogo Organizacional, Consultor RH, etc."
-                    />
-                    {errors.profissao && (
-                      <p className="mt-1 text-sm text-red-600">{errors.profissao.message}</p>
-                    )}
-                  </div>
-                </div>
-
-                {/* LinkedIn/Portfólio */}
-                <div>
-                  <label htmlFor="linkedinPortfolio" className="block text-sm font-medium text-gray-700 mb-2">
-                    LinkedIn ou Portfólio *
-                  </label>
-                  <input
-                    type="url"
-                    id="linkedinPortfolio"
-                    {...register('linkedinPortfolio')}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
-                      errors.linkedinPortfolio ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                    placeholder="https://linkedin.com/in/seuperfil ou https://seuportfolio.com"
-                  />
-                  {errors.linkedinPortfolio && (
-                    <p className="mt-1 text-sm text-red-600">{errors.linkedinPortfolio.message}</p>
-                  )}
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* WhatsApp */}
-                  <div>
-                    <label htmlFor="whatsapp" className="block text-sm font-medium text-gray-700 mb-2">
-                      WhatsApp *
-                    </label>
-                    <input
-                      type="tel"
-                      id="whatsapp"
-                      {...register('whatsapp')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
-                        errors.whatsapp ? 'border-red-500' : 'border-gray-300'
-                      }`}
-                      placeholder="(11) 99999-9999"
-                    />
-                    {errors.whatsapp && (
-                      <p className="mt-1 text-sm text-red-600">{errors.whatsapp.message}</p>
-                    )}
-                  </div>
-
-                  {/* E-mail */}
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      E-mail *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      {...register('email')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
-                        errors.email ? 'border-red-500' : 'border-gray-300'
-                      }`}
-                      placeholder="seu@email.com"
-                    />
-                    {errors.email && (
-                      <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-                    )}
-                  </div>
-                </div>
-
-                {/* Mensagem de Apresentação */}
-                <div>
-                  <label htmlFor="mensagemApresentacao" className="block text-sm font-medium text-gray-700 mb-2">
-                    Mensagem de Apresentação *
-                  </label>
-                  <textarea
-                    id="mensagemApresentacao"
-                    {...register('mensagemApresentacao')}
-                    rows={6}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
-                      errors.mensagemApresentacao ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                    placeholder="Apresente-se! Conte sobre sua experiência profissional, principais competências, projetos relevantes, áreas de especialização e como você pode contribuir com a Passione. Inclua também sua disponibilidade e expectativas para a parceria..."
-                  />
-                  {errors.mensagemApresentacao && (
-                    <p className="mt-1 text-sm text-red-600">{errors.mensagemApresentacao.message}</p>
-                  )}
-                </div>
-
                 {/* Botão de Envio */}
-                <div className="text-center pt-6">
+                <div className="text-center  pt-6">
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -378,7 +402,7 @@ const Parceiros: React.FC = () => {
                     ) : (
                       <>
                         <Send className="h-5 w-5" />
-                        <span>Enviar Proposta de Parceria</span>
+                        <span className='uppercase'>Enviar Proposta de Parceria</span>
                       </>
                     )}
                   </button>
@@ -444,7 +468,7 @@ const Parceiros: React.FC = () => {
                   e.preventDefault();
                   document.getElementById('nome')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200"
+                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-[#1E0549]/10 transition-colors duration-200"
               >
                 Enviar Proposta Agora
               </a>

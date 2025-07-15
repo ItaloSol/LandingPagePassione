@@ -75,9 +75,7 @@ const Contato: React.FC = () => {
                     rel="noopener noreferrer"
                     className="flex items-center space-x-4 p-4 bg-white rounded-lg hover:shadow-md transition-shadow duration-200"
                   >
-                    <div className={`p-3 rounded-lg bg-gray-100 ${contato.cor}`}>
-                      <contato.icon className="h-6 w-6" />
-                    </div>
+                      <img src={`/${contato.titulo.toLowerCase()}.png`} alt={contato.titulo} className="h-auto w-8" />
                     <div>
                       <h3 className="font-semibold text-gray-900">{contato.titulo}</h3>
                       <p className="text-gray-600">{contato.info}</p>
@@ -139,21 +137,21 @@ const Contato: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
                 href="/servicos"
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors duration-200"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200"
               >
                 SOU EMPRESA <br></br>
                 Conheça nossos serviços
               </a>
               <a
                 href="/portal-vagas"
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors duration-200"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200"
               >
                 SOU CANDIDATO <br></br>
                 Portal de vagas
               </a>
               <a
                 href="/parceiros"
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors duration-200"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200"
               >
                 QUERO SER PARCEIRO <br></br>
                 Parceiros

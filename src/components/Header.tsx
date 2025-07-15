@@ -31,7 +31,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-[#1E0549] shadow-lg sticky top-0 z-50">
+    <header className="bg-[#1E0549] shadow-lg sticky top-0 h-auto z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
             className="flex items-center space-x-2"
             onClick={handleLinkClick}
           >
-            <img src="/logo.png" alt="Passione Logo" className="h-12 w-auto" />
+            <img src="/logotipo.png" alt="Passione Logo" className="py-1 h-16 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -81,8 +81,8 @@ const Header: React.FC = () => {
                   onClick={handleLinkClick}
                   className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
                     isActive(item.href)
-                      ? 'text-white bg-white'
-                      : 'text-gray-700 hover:text-white hover:bg-gray-50'
+                      ? 'text-black bg-white'
+                      : 'text-gray-700 hover:text-black hover:bg-gray-50'
                   }`}
                 >
                   {item.name}
