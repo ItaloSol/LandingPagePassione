@@ -41,7 +41,7 @@ const Contato: React.FC = () => {
     },
     {
       icon: Facebook,
-      titulo: 'LinkedIn',
+      titulo: 'Facebook',
       info: 'passione.rh',
       link: 'https://www.facebook.com/passione.rh',
       cor: 'text-blue-700'
