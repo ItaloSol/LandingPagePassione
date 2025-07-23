@@ -249,7 +249,7 @@ const Home: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/contato"
+              to="/servicos"
               className="bg-white text-[#1E0549] px-8 py-4 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200 inline-flex items-center justify-center space-x-2"
             >
               <span>SOLICITAR PROPOSTA</span>
