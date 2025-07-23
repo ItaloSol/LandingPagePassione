@@ -3,21 +3,20 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Users, Target, Award, TrendingUp, CheckCircle, ArrowRight, Building, Heart, Shield, BarChart3, Lightbulb, Star, Phone, Link } from 'lucide-react';
 import { useState } from 'react';
+import React from 'react';
 // Schema de validação para o formulário empresarial
 const empresaSchema = z.object({
   nomeEmpresa: z.string().min(2, 'Nome da empresa deve ter pelo menos 2 caracteres'),
-  responsavel: z.string().min(2, 'Nome do responsável deve ter pelo menos 2 caracteres'),
-  cargo: z.string().min(2, 'Cargo deve ter pelo menos 2 caracteres'),
+  segmento: z.string().min(2, 'Segmento deve ter pelo menos 2 caracteres'),
+  nome: z.string().min(2, 'Nome do responsável deve ter pelo menos 2 caracteres'),
   emailCorporativo: z.string().email('E-mail corporativo inválido'),
   whatsapp: z.string().min(10, 'WhatsApp deve ter pelo menos 10 dígitos'),
   servicoInteresse: z.string().min(1, 'Selecione um serviço de interesse'),
-  mensagemDetalhada: z.string().min(10, 'Mensagem deve ter pelo menos 10 caracteres'),
+  mensagemApresentacao: z.string().min(10, 'Mensagem deve ter pelo menos 10 caracteres'),
   politicaprivacidade: z.literal(true, {
     errorMap: () => ({ message: 'Você deve concordar com a Política de privacidade para enviar o formulário.' })
   }),
-  codigo: z.string().optional()
 });
-
 type EmpresaFormData = z.infer<typeof empresaSchema>;
 
 
@@ -28,17 +27,49 @@ interface Servico {
   descricao: string;
   detalhes: string[];
   beneficios: string[];
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   cor: string;
   preco?: string;
   duracao?: string;
 }
 
 const Servicos: React.FC = () => {
-
-  useForm<EmpresaFormData>({
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = React.useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<EmpresaFormData>({
     resolver: zodResolver(empresaSchema)
   });
+  const onSubmit = async (data: EmpresaFormData) => {
+    try {
+      const formData = new FormData();
+      Object.entries(data).forEach(([key, value]) => {
+        if (value !== undefined && value !== null && value !== '') {
+          formData.append(key, value);
+        }
+      });
+      formData.append('Created', new Date().toISOString());
+      formData.append('source', 'Serviços');
+      
+      const response = await fetch('https://api.sheetmonkey.io/form/4GNMHEQJVDe2pZbbn5DF3o', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        setSuccessMessage('Formulário enviado com sucesso!');
+      } else {
+        setSuccessMessage('Erro ao enviar o formulário. Tente novamente.');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
+      setSuccessMessage('Erro ao enviar o formulário. Tente novamente.');
+    }
+  };
+  
 
 
 
@@ -47,7 +78,6 @@ const Servicos: React.FC = () => {
   const [servicoSelecionado, setServicoSelecionado] = useState<Servico | null>(null);
 
   const servicos: Servico[] = [
-    // RECURSOS HUMANOS
     {
       id: 'recrutamento-selecao',
       categoria: 'RH',
@@ -516,7 +546,252 @@ const Servicos: React.FC = () => {
         </div>
 
 
+        
+        {/* Formulário de Serviços */}
+        <section className="mb-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-t-4 border-blue-600">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  Solicite um Orçamento
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Preencha o formulário abaixo
+                </p>
+              </div>
 
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Nome da Empresa */}
+          <div>
+            <label htmlFor="nomeEmpresa" className="block text-sm font-medium text-gray-700 mb-2">
+              Nome da Empresa *
+            </label>
+            <input
+              type="text"
+              id="nomeEmpresa"
+              {...register('nomeEmpresa')}
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.nomeEmpresa ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="Nome da sua empresa"
+            />
+            {errors.nomeEmpresa && (
+              <p className="mt-1 text-sm text-red-600">{errors.nomeEmpresa.message}</p>
+            )}
+          </div>
+
+          {/* Segmento */}
+          <div>
+            <label htmlFor="segmento" className="block text-sm font-medium text-gray-700 mb-2">
+              Segmento *
+            </label>
+            <input
+              type="text"
+              id="segmento"
+              {...register('segmento')}
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.segmento ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="Segmento de atuação"
+            />
+            {errors.segmento && (
+              <p className="mt-1 text-sm text-red-600">{errors.segmento.message}</p>
+            )}
+          </div>
+
+          {/* Nome do Responsável */}
+          <div>
+            <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-2">
+              Nome do Responsável *
+            </label>
+            <input
+              type="text"
+              id="nome"
+              {...register('nome')}
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.nome ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="Nome completo"
+            />
+            {errors.nome && (
+              <p className="mt-1 text-sm text-red-600">{errors.nome.message}</p>
+            )}
+          </div>
+
+          {/* E-mail para Contato */}
+          <div>
+            <label htmlFor="emailCorporativo" className="block text-sm font-medium text-gray-700 mb-2">
+              E-mail para Contato *
+            </label>
+            <input
+              type="email"
+              id="emailCorporativo"
+              {...register('emailCorporativo')}
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.emailCorporativo ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="email@empresa.com"
+            />
+            {errors.emailCorporativo && (
+              <p className="mt-1 text-sm text-red-600">{errors.emailCorporativo.message}</p>
+            )}
+          </div>
+
+          {/* Telefone/WhatsApp */}
+          <div>
+            <label htmlFor="whatsapp" className="block text-sm font-medium text-gray-700 mb-2">
+              Telefone/WhatsApp *
+            </label>
+            <input
+              type="tel"
+              id="whatsapp"
+              {...register('whatsapp')}
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.whatsapp ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="(XX) XXXXX-XXXX"
+            />
+            {errors.whatsapp && (
+              <p className="mt-1 text-sm text-red-600">{errors.whatsapp.message}</p>
+            )}
+          </div>
+
+          {/* Site */}
+          <div>
+            <label htmlFor="site" className="block text-sm font-medium text-gray-700 mb-2">
+              Site
+            </label>
+            <input
+              type="url"
+              id="site"
+              {...register('site')}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              placeholder="https://www.suaempresa.com.br"
+            />
+          </div>
+
+          {/* Instagram */}
+          <div>
+            <label htmlFor="instagram" className="block text-sm font-medium text-gray-700 mb-2">
+              Instagram
+            </label>
+            <input
+              type="text"
+              id="instagram"
+              {...register('instagram')}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              placeholder="@suaempresa"
+            />
+          </div>
+
+          {/* Serviço buscando */}
+          <div className="md:col-span-2">
+            <label htmlFor="servicoInteresse" className="block text-sm font-medium text-gray-700 mb-2">
+              Qual serviço está buscando? *
+            </label>
+            <select
+              id="servicoInteresse"
+              {...register('servicoInteresse')}
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.servicoInteresse ? 'border-red-500' : 'border-gray-300'}`}
+            >
+              <option value="">Selecione um serviço</option>
+              {servicos.map((servico) => (
+                <option key={servico.id} value={servico.titulo}>
+                  {servico.titulo}
+                </option>
+              ))}
+            </select>
+            {errors.servicoInteresse && (
+              <p className="mt-1 text-sm text-red-600">{errors.servicoInteresse.message}</p>
+            )}
+          </div>
+
+          {/* Mensagem detalhada */}
+          <div className="md:col-span-2">
+            <label htmlFor="mensagemApresentacao" className="block text-sm font-medium text-gray-700 mb-2">
+              Descreva brevemente a necessidade da empresa *
+            </label>
+            <textarea
+              id="mensagemApresentacao"
+              {...register('mensagemApresentacao')}
+              rows={4}
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.mensagemApresentacao ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="Descreva sua necessidade..."
+            ></textarea>
+            {errors.mensagemApresentacao && (
+              <p className="mt-1 text-sm text-red-600">{errors.mensagemApresentacao.message}</p>
+            )}
+          </div>
+
+          {/* Política de privacidade */}
+          <div className="md:col-span-2">
+            <div className="flex items-start">
+              
+              {/* Política de privacidade */}
+              <div className="mb-4 bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <div
+                    className="flex items-center justify-between cursor-pointer"
+                    onClick={() => setShowPrivacyPolicy(!showPrivacyPolicy)}
+                  >
+                    <h3 className="font-semibold text-gray-800">Política de privacidade – Tratamento de dados pessoais</h3>
+                    <svg
+                      className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${showPrivacyPolicy ? 'rotate-180' : ''}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                  {showPrivacyPolicy && (
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-600 mb-2">
+                        Ao preencher este formulário, você autoriza o tratamento dos seus dados pessoais pela Passione Gente & Gestão Empresarial, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados - LGPD).<br />
+                        As informações fornecidas serão utilizadas exclusivamente para fins de cadastro em nosso banco de talentos e/ou envio de propostas comerciais relacionadas aos nossos serviços. Seus dados serão armazenados com segurança e não serão compartilhados com terceiros sem o seu consentimento.<br />
+                        Você poderá, a qualquer momento, solicitar a atualização, correção ou exclusão dos seus dados, conforme os seus direitos garantidos pela LGPD, entrando em contato pelo e-mail: <a href="mailto:contato@passione-rh.com.br" className="text-blue-600 underline">contato@passione-rh.com.br</a>.
+                      </p>
+                    </div>
+                  )}
+                  <div className="flex items-center mt-2">
+                    <input
+                      type="checkbox"
+                      id="politicaprivacidade"
+                      {...register('politicaprivacidade')}
+                      className="mr-2"
+                    />
+                    <label htmlFor="politicaprivacidade" className="text-sm text-gray-700 select-none">
+                      Li e concordo com a Política de privacidade e autorizo o uso dos meus dados pessoais conforme a LGPD.
+                    </label>
+                  </div>
+                  {errors.politicaprivacidade && (
+                    <p className="mt-1 text-sm text-[#1E0549]">{errors.politicaprivacidade.message}</p>
+                  )}
+                </div>
+            </div>
+          </div>
+
+          {/* Botão de envio */}
+          <div className="md:col-span-2">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? 'Enviando...' : 'ENVIAR PROPOSTA'}
+            </button>
+          </div>
+
+          {/* Mensagem de sucesso */}
+          {successMessage && (
+            <div className="md:col-span-2">
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <p className="text-green-800 font-medium">{successMessage}</p>
+              </div>
+            </div>
+          )}
+        </div>
+
+
+        {/* <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Enviando...' : 'ENVIAR PROPOSTA'}
+        </button> */}
+      </form>
+            </div>
+          </div>
+        </section>
+
+                  
 
         {/* Palestras, Cursos & Desenvolvimento */}
         <section className="mb-16">

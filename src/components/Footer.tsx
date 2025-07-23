@@ -82,15 +82,7 @@ const Footer: React.FC = () => {
                   Blog
                 </Link>
               </li>
-              <li>
-                <Link 
-                  to="/contato" 
-                  onClick={handleLinkClick}
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
-                >
-                  Política de privacidade
-                </Link>
-              </li>
+             
             </ul>
           </div>
 

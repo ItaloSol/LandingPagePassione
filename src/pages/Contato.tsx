@@ -7,9 +7,6 @@ import { Mail, MessageCircle, Instagram, Linkedin, Facebook} from 'lucide-react'
 
 const Contato: React.FC = () => {
   
-
- 
-
   const contatos = [
     {
       icon: MessageCircle,
@@ -147,21 +144,21 @@ const Contato: React.FC = () => {
                 className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200"
               >
                 SOU EMPRESA <br></br>
-                Conheça nossos serviços
+                
               </a>
               <a
                 href="/portal-vagas"
                 className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200"
               >
                 SOU CANDIDATO <br></br>
-                Portal de vagas
+               
               </a>
               <a
                 href="/parceiros"
                 className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200"
               >
                 QUERO SER PARCEIRO <br></br>
-                Parceiros
+                
               </a>
             </div>
           </div>

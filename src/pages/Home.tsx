@@ -90,23 +90,23 @@ const Home: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/contato"
-                className="bg-white text-[#1E0549] px-8 py-4 rounded-lg font-semibold hover:bg-red-50 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                to="/servicos"
+                className=" uppercasese bg-white text-[#1E0549] px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
-                <span>Quero Contratar</span>
+                <span>QUERO CONTRATAR</span>
                 
               </Link>
               <Link
                 to="/portal-vagas"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className=" uppercasese border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
-                Enviar Currículo
+                ENVIAR CURRÍCULO
               </Link>
               <Link
                 to="/parceiros"
-                className="border-2 border-red-200 text-red-100 px-8 py-4 rounded-lg font-semibold hover:bg-red-200 hover:text-red-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className=" uppercasese border-2 border-red-200 text-red-100 px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
-                Seja Parceiro
+                SEJA PARCEIRO
               </Link>
             </div>
           </div>
@@ -252,14 +252,14 @@ const Home: React.FC = () => {
               to="/contato"
               className="bg-white text-[#1E0549] px-8 py-4 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200 inline-flex items-center justify-center space-x-2"
             >
-              <span>Solicitar Proposta</span>
+              <span>SOLICITAR PROPOSTA</span>
               
             </Link>
             <Link
               to="/portal-vagas"
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200"
             >
-              Portal de Vagas
+              PORTAL DE VAGAS
             </Link>
           </div>
         </div>

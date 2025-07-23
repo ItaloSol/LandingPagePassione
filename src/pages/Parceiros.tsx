@@ -41,7 +41,7 @@ const Parceiros: React.FC = () => {
       });
       formData.append('Created', new Date().toISOString());
       formData.append('source', 'Parceria');
-      
+
       const response = await fetch('https://api.sheetmonkey.io/form/4GNMHEQJVDe2pZbbn5DF3o', {
         method: 'POST',
         body: formData
@@ -124,7 +124,7 @@ const Parceiros: React.FC = () => {
             </div>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Conecte-se com a Passione e faça parte de uma rede de profissionais 
+            Conecte-se com a Passione e faça parte de uma rede de profissionais
             especializados em transformar a gestão de pessoas e negócios
           </p>
         </div>
@@ -216,7 +216,7 @@ const Parceiros: React.FC = () => {
               </div>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                
+
                 {/* Código comercial */}
                 <div>
                   <label htmlFor="codigo" className="block text-sm font-medium text-gray-700 mb-2">
@@ -240,9 +240,8 @@ const Parceiros: React.FC = () => {
                       type="text"
                       id="nome"
                       {...register('nome')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
-                        errors.nome ? 'border-[#1E0549]/50' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.nome ? 'border-[#1E0549]/50' : 'border-gray-300'
+                        }`}
                       placeholder="Seu nome completo"
                     />
                     {errors.nome && (
@@ -259,9 +258,8 @@ const Parceiros: React.FC = () => {
                       type="text"
                       id="profissao"
                       {...register('profissao')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
-                        errors.profissao ? 'border-[#1E0549]/50' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.profissao ? 'border-[#1E0549]/50' : 'border-gray-300'
+                        }`}
                       placeholder="Ex: Psicólogo Organizacional, Consultor RH, etc."
                     />
                     {errors.profissao && (
@@ -279,9 +277,8 @@ const Parceiros: React.FC = () => {
                     type="url"
                     id="linkedinPortfolio"
                     {...register('linkedinPortfolio')}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
-                      errors.linkedinPortfolio ? 'border-[#1E0549]/50' : 'border-gray-300'
-                    }`}
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.linkedinPortfolio ? 'border-[#1E0549]/50' : 'border-gray-300'
+                      }`}
                     placeholder="https://linkedin.com/in/seuperfil ou https://seuportfolio.com"
                   />
                   {errors.linkedinPortfolio && (
@@ -299,9 +296,8 @@ const Parceiros: React.FC = () => {
                       type="tel"
                       id="whatsapp"
                       {...register('whatsapp')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
-                        errors.whatsapp ? 'border-[#1E0549]/50' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.whatsapp ? 'border-[#1E0549]/50' : 'border-gray-300'
+                        }`}
                       placeholder="(11) 99999-9999"
                     />
                     {errors.whatsapp && (
@@ -318,9 +314,8 @@ const Parceiros: React.FC = () => {
                       type="email"
                       id="email"
                       {...register('email')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
-                        errors.email ? 'border-[#1E0549]/50' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.email ? 'border-[#1E0549]/50' : 'border-gray-300'
+                        }`}
                       placeholder="seu@email.com"
                     />
                     {errors.email && (
@@ -338,26 +333,25 @@ const Parceiros: React.FC = () => {
                     id="mensagemApresentacao"
                     {...register('mensagemApresentacao')}
                     rows={6}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
-                      errors.mensagemApresentacao ? 'border-[#1E0549]/50' : 'border-gray-300'
-                    }`}
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.mensagemApresentacao ? 'border-[#1E0549]/50' : 'border-gray-300'
+                      }`}
                     placeholder="Apresente-se! Conte sobre sua experiência profissional, principais competências, projetos relevantes, áreas de especialização e como você pode contribuir com a Passione. Inclua também sua disponibilidade e expectativas para a parceria..."
                   />
                   {errors.mensagemApresentacao && (
                     <p className="mt-1 text-sm text-[#1E0549]">{errors.mensagemApresentacao.message}</p>
                   )}
                 </div>
-{/* Política de privacidade */}
-<div className="mb-4 bg-gray-50 rounded-lg p-4 border border-gray-200">
-                  <div 
-                    className="flex items-center justify-between cursor-pointer" 
+                {/* Política de privacidade */}
+                <div className="mb-4 bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <div
+                    className="flex items-center justify-between cursor-pointer"
                     onClick={() => setShowPrivacyPolicy(!showPrivacyPolicy)}
                   >
                     <h3 className="font-semibold text-gray-800">Política de privacidade – Tratamento de dados pessoais</h3>
-                    <svg 
-                      className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${showPrivacyPolicy ? 'rotate-180' : ''}`} 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
+                    <svg
+                      className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${showPrivacyPolicy ? 'rotate-180' : ''}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -366,8 +360,8 @@ const Parceiros: React.FC = () => {
                   {showPrivacyPolicy && (
                     <div className="mt-2">
                       <p className="text-sm text-gray-600 mb-2">
-                        Ao preencher este formulário, você autoriza o tratamento dos seus dados pessoais pela Passione Gente & Gestão Empresarial, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados - LGPD).<br/>
-                        As informações fornecidas serão utilizadas exclusivamente para fins de cadastro em nosso banco de talentos e/ou envio de propostas comerciais relacionadas aos nossos serviços. Seus dados serão armazenados com segurança e não serão compartilhados com terceiros sem o seu consentimento.<br/>
+                        Ao preencher este formulário, você autoriza o tratamento dos seus dados pessoais pela Passione Gente & Gestão Empresarial, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados - LGPD).<br />
+                        As informações fornecidas serão utilizadas exclusivamente para fins de cadastro em nosso banco de talentos e/ou envio de propostas comerciais relacionadas aos nossos serviços. Seus dados serão armazenados com segurança e não serão compartilhados com terceiros sem o seu consentimento.<br />
                         Você poderá, a qualquer momento, solicitar a atualização, correção ou exclusão dos seus dados, conforme os seus direitos garantidos pela LGPD, entrando em contato pelo e-mail: <a href="mailto:contato@passione-rh.com.br" className="text-blue-600 underline">contato@passione-rh.com.br</a>.
                       </p>
                     </div>
@@ -458,7 +452,7 @@ const Parceiros: React.FC = () => {
               Pronto para Transformar Negócios Juntos?
             </h2>
             <p className="text-xl mb-8 text-blue-100">
-              Junte-se à nossa rede de parceiros e faça parte da transformação 
+              Junte-se à nossa rede de parceiros e faça parte da transformação
               da gestão de pessoas e negócios no Brasil.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
