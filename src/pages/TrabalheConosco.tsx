@@ -462,31 +462,33 @@ const TrabalheConosco: React.FC = () => {
         </section>
 
         {/* CTA Final */}
-        <section className="text-center">
-          <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-2xl p-8 md:p-12">
-            <h2 className="text-3xl font-bold mb-4">
-              Pronto para fazer a diferença?
-            </h2>
-            <p className="text-xl mb-8 text-red-100">
-            A sua trajetória é única e cheia de valor. A oportunidade certa começa quando você acredita no seu potencial.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#curriculo"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('nome')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="bg-white text-[#1E0549] uppercase px-8 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200"
-              >
-                Enviar Currículo Agora
-              </a>
-              <a
-                href="/contato"
-                className="border-2 border-white uppercase text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#1E0549] transition-colors duration-200"
-              >
-                Fale Conosco
-              </a>
+        <section className="text-center py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-[#1E0549]/50">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                Pronto para fazer a diferença?
+              </h2>
+              <p className="text-lg text-gray-600 mb-8">
+              A sua trajetória é única e cheia de valor. A oportunidade certa começa quando você acredita no seu potencial.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="#curriculo"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('nome')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="bg-[#1E0549] uppercase text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#1E0549]/90 transition-colors duration-200"
+                >
+                  Enviar Currículo Agora
+                </a>
+                <a
+                  href="/contato"
+                  className="border-2 uppercase border-[#1E0549] text-[#1E0549] px-8 py-3 rounded-lg font-semibold hover:bg-[#1E0549] hover:text-white transition-colors duration-200"
+                >
+                  Fale Conosco
+                </a>
+              </div>
             </div>
           </div>
         </section>

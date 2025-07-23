@@ -455,7 +455,7 @@ const Blog: React.FC = () => {
               className="bg-gradient-to-r from-green-600 to-green-700 text-white p-6 rounded-xl hover:shadow-lg transition-shadow duration-300"
             >
               <Users className="h-8 w-8 mb-4" />
-              <h3 className="text-lg font-bold mb-2">Portal de Vagas</h3>
+              <h3 className="text-lg font-bold mb-2">Portal de vagas</h3>
               <p className="text-green-100 mb-4">Envie seu currículo</p>
               <div className="flex items-center space-x-1 font-medium">
                 <span className="uppercase">Enviar Currículo</span>
@@ -464,14 +464,14 @@ const Blog: React.FC = () => {
             </Link>
 
             <Link
-              to="/contato"
+              to="/servicos"
               className="bg-gradient-to-r from-red-600 to-red-700 text-white p-6 rounded-xl hover:shadow-lg transition-shadow duration-300"
             >
               <Target className="h-8 w-8 mb-4" />
-              <h3 className="text-lg font-bold mb-2">Transforme sua Empresa</h3>
+              <h3 className="text-lg font-bold mb-2">Transforme sua empresa</h3>
               <p className="text-red-100 mb-4">Solicite uma consultoria personalizada</p>
               <div className="flex items-center space-x-1 font-medium">
-                <span>Solicitar Proposta</span>
+                <span className="uppercase">Solicitar Proposta</span>
                 <ArrowRight className="h-4 w-4" />
               </div>
             </Link>
@@ -481,23 +481,23 @@ const Blog: React.FC = () => {
               className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-xl hover:shadow-lg transition-shadow duration-300"
             >
               <TrendingUp className="h-8 w-8 mb-4" />
-              <h3 className="text-lg font-bold mb-2">Seja Nosso Parceiro</h3>
+              <h3 className="text-lg font-bold mb-2">Seja nosso parceiro</h3>
               <p className="text-blue-100 mb-4">Junte-se à nossa rede de especialistas</p>
               <div className="flex items-center space-x-1 font-medium">
-                <span>Enviar Proposta</span>
+                <span className="uppercase">Enviar Proposta</span>
                 <ArrowRight className="h-4 w-4" />
               </div>
             </Link>
 
             <Link
-              to="/contato"
+              to="/servicos"
               className="bg-gradient-to-r from-purple-600 to-purple-700 text-white p-6 rounded-xl hover:shadow-lg transition-shadow duration-300"
             >
               <Lightbulb className="h-8 w-8 mb-4" />
               <h3 className="text-lg font-bold mb-2">Cursos & Palestras</h3>
               <p className="text-purple-100 mb-4">Capacitações personalizadas para sua equipe</p>
               <div className="flex items-center space-x-1 font-medium">
-                <span>Solicitar Orçamento</span>
+                <span className="uppercase">Solicitar Orçamento</span>
                 <ArrowRight className="h-4 w-4" />
               </div>
             </Link>
