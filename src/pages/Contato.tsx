@@ -111,8 +111,11 @@ const Contato: React.FC = () => {
               
             </div>
 
-            {/* Tempo de Resposta */}
-            <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-2xl p-8">
+           
+          </div>
+        </div>
+ {/* Tempo de Resposta */}
+ <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-2xl my-8 p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 Compromisso de Atendimento
               </h2>
@@ -125,9 +128,6 @@ const Contato: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
         {/* CTA Section */}
         <section className="text-center py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
