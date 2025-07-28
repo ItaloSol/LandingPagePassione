@@ -10,9 +10,16 @@ const curriculoSchema = z.object({
   email: z.string().email('E-mail inválido'),
   whatsapp: z.string()
     .min(11, 'WhatsApp deve ter pelo menos 11 dígitos (incluindo DDD)')
-    .max(15, 'WhatsApp deve ter no máximo 15 dígitos')
-    .regex(/^\d+$/, 'Somente números são permitidos')
-    .transform(val => val.replace(/[^\d]/g, '')), // Remove non-numeric characters
+    .transform(val => {
+      const digits = val.replace(/\D/g, '');
+
+      if (digits.length === 11) {
+        // Formato: (11) 9 1234-1234
+        return `(${digits.slice(0, 2)}) ${digits.slice(2, 3)} ${digits.slice(3, 7)}-${digits.slice(7, 11)}`;
+      }
+
+      return digits; // Retorna apenas os números se não tiver 11 dígitos
+    }),
   areaInteresse: z.string().min(1, 'Selecione uma área de interesse'),
   escolaridade: z.string().min(1, 'Selecione sua escolaridade'),
   curriculo: z.any().optional(),
@@ -134,7 +141,7 @@ const TrabalheConosco: React.FC = () => {
             </div>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Acreditamos no potencial humano como força estratégica. Envie seu currículo e faça parte de processos seletivos que conectam talento e propósito.
+            Acreditamos no potencial humano como força estratégica. Envie seu currículo e faça parte de processos seletivos que conectam talento e propósito.
           </p>
         </div>
 
@@ -191,7 +198,7 @@ const TrabalheConosco: React.FC = () => {
               </div>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Nome Completo */}
                   <div>
@@ -202,13 +209,12 @@ const TrabalheConosco: React.FC = () => {
                       type="text"
                       id="nome"
                       {...register('nome')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors ${
-                        errors.nome ? 'border-[#1E0549]/50' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors ${errors.nome ? 'border-[#1E0549]/50' : 'border-gray-300'
+                        }`}
                       placeholder="Seu nome completo"
                     />
-                   
-                    
+
+
                   </div>
 
                   {/* E-mail */}
@@ -220,9 +226,8 @@ const TrabalheConosco: React.FC = () => {
                       type="email"
                       id="email"
                       {...register('email')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors ${
-                        errors.email ? 'border-[#1E0549]/50' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors ${errors.email ? 'border-[#1E0549]/50' : 'border-gray-300'
+                        }`}
                       placeholder="seu@email.com"
                     />
                     {errors.email && (
@@ -241,10 +246,29 @@ const TrabalheConosco: React.FC = () => {
                       type="tel"
                       id="whatsapp"
                       {...register('whatsapp')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors ${
-                        errors.whatsapp ? 'border-[#1E0549]/50' : 'border-gray-300'
-                      }`}
-                      placeholder="(11) 99999-9999"
+                      onChange={(e) => {
+                        const raw = e.target.value.replace(/\D/g, '');
+                        let formatted = '';
+
+                        if (raw.length > 0) formatted += `(${raw.slice(0, 2)}`;
+                        if (raw.length >= 2) formatted += `) `;
+                        if (raw.length >= 3) formatted += `${raw.slice(2, 3)} `;
+                        if (raw.length >= 4) formatted += `${raw.slice(3, 7)}`;
+                        if (raw.length >= 8) formatted += `-${raw.slice(7, 11)}`;
+
+                        e.target.value = formatted;
+                      }}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors ${errors.whatsapp ? 'border-[#1E0549]/50' : 'border-gray-300'
+                        }`}
+                      placeholder="(11) 9 1234-1234"
+                      onKeyDown={(e) => {
+                        const allowedKeys = [
+                          'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'
+                        ];
+                        if (!/^[0-9]$/.test(e.key) && !allowedKeys.includes(e.key)) {
+                          e.preventDefault();
+                        }
+                      }}
                     />
                     {errors.whatsapp && (
                       <p className="mt-1 text-sm text-[#1E0549]">{errors.whatsapp.message}</p>
@@ -259,9 +283,8 @@ const TrabalheConosco: React.FC = () => {
                     <select
                       id="areaInteresse"
                       {...register('areaInteresse')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors ${
-                        errors.areaInteresse ? 'border-[#1E0549]/50' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors ${errors.areaInteresse ? 'border-[#1E0549]/50' : 'border-gray-300'
+                        }`}
                     >
                       <option value="">Selecione uma área</option>
                       {areasInteresse.map((area, index) => (
@@ -281,9 +304,8 @@ const TrabalheConosco: React.FC = () => {
                     <select
                       id="escolaridade"
                       {...register('escolaridade')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors ${
-                        errors.escolaridade ? 'border-[#1E0549]/50' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors ${errors.escolaridade ? 'border-[#1E0549]/50' : 'border-gray-300'
+                        }`}
                     >
                       <option value="">Selecione sua escolaridade</option>
                       {escolaridades.map((escolaridade) => (
@@ -309,9 +331,8 @@ const TrabalheConosco: React.FC = () => {
                       id="curriculo"
                       // {...register('curriculo')}
                       accept=".pdf,.doc,.docx"
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-red-50 file:text-red-700 hover:file:bg-[#1E0549]/10 ${
-                        errors.curriculo ? 'border-[#1E0549]/50' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-red-50 file:text-red-700 hover:file:bg-[#1E0549]/10 ${errors.curriculo ? 'border-[#1E0549]/50' : 'border-gray-300'
+                        }`}
                     />
                     <Upload className="absolute right-3 top-3 h-5 w-5 text-gray-400" />
                   </div>
@@ -350,17 +371,17 @@ const TrabalheConosco: React.FC = () => {
                     placeholder="Código fornecido pela equipe comercial (opcional)"
                   />
                 </div>
-{/* Política de privacidade */}
-<div className="mb-4 bg-gray-50 rounded-lg p-4 border border-gray-200">
-                  <div 
-                    className="flex items-center justify-between cursor-pointer" 
+                {/* Política de privacidade */}
+                <div className="mb-4 bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <div
+                    className="flex items-center justify-between cursor-pointer"
                     onClick={() => setShowPrivacyPolicy(!showPrivacyPolicy)}
                   >
                     <h3 className="font-semibold text-gray-800">Política de privacidade – Tratamento de dados pessoais</h3>
-                    <svg 
-                      className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${showPrivacyPolicy ? 'rotate-180' : ''}`} 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
+                    <svg
+                      className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${showPrivacyPolicy ? 'rotate-180' : ''}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -369,8 +390,8 @@ const TrabalheConosco: React.FC = () => {
                   {showPrivacyPolicy && (
                     <div className="mt-2">
                       <p className="text-sm text-gray-600 mb-2">
-                        Ao preencher este formulário, você autoriza o tratamento dos seus dados pessoais pela Passione Gente & Gestão Empresarial, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados - LGPD).<br/>
-                        As informações fornecidas serão utilizadas exclusivamente para fins de cadastro em nosso banco de talentos e/ou envio de propostas comerciais relacionadas aos nossos serviços. Seus dados serão armazenados com segurança e não serão compartilhados com terceiros sem o seu consentimento.<br/>
+                        Ao preencher este formulário, você autoriza o tratamento dos seus dados pessoais pela Passione Gente & Gestão Empresarial, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados - LGPD).<br />
+                        As informações fornecidas serão utilizadas exclusivamente para fins de cadastro em nosso banco de talentos e/ou envio de propostas comerciais relacionadas aos nossos serviços. Seus dados serão armazenados com segurança e não serão compartilhados com terceiros sem o seu consentimento.<br />
                         Você poderá, a qualquer momento, solicitar a atualização, correção ou exclusão dos seus dados, conforme os seus direitos garantidos pela LGPD, entrando em contato pelo e-mail: <a href="mailto:contato@passione-rh.com.br" className="text-[#1E0549] underline">contato@passione-rh.com.br</a>.
                       </p>
                     </div>
@@ -469,7 +490,7 @@ const TrabalheConosco: React.FC = () => {
                 Pronto para fazer a diferença?
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-              A sua trajetória é única e cheia de valor. A oportunidade certa começa quando você acredita no seu potencial.
+                A sua trajetória é única e cheia de valor. A oportunidade certa começa quando você acredita no seu potencial.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a

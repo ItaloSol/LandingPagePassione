@@ -9,7 +9,18 @@ const parceiroSchema = z.object({
   nome: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
   profissao: z.string().min(2, 'Profissão deve ter pelo menos 2 caracteres'),
   linkedinPortfolio: z.string().url('Insira uma URL válida (LinkedIn ou Portfólio)'),
-  whatsapp: z.string().min(10, 'WhatsApp deve ter pelo menos 10 dígitos'),
+  whatsapp: z.string()
+  .min(11, 'WhatsApp deve ter pelo menos 11 dígitos (incluindo DDD)')
+  .transform(val => {
+    const digits = val.replace(/\D/g, '');
+
+    if (digits.length === 11) {
+      // Formato: (11) 9 1234-1234
+      return `(${digits.slice(0, 2)}) ${digits.slice(2, 3)} ${digits.slice(3, 7)}-${digits.slice(7, 11)}`;
+    }
+
+    return digits; // Retorna apenas os números se não tiver 11 dígitos
+  }),
   email: z.string().email('E-mail inválido'),
   mensagemApresentacao: z.string().min(50, 'Mensagem deve ter pelo menos 50 caracteres'),
   politicaprivacidade: z.literal(true, {
@@ -296,9 +307,29 @@ const Parceiros: React.FC = () => {
                       type="tel"
                       id="whatsapp"
                       {...register('whatsapp')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.whatsapp ? 'border-[#1E0549]/50' : 'border-gray-300'
+                      onChange={(e) => {
+                        const raw = e.target.value.replace(/\D/g, '');
+                        let formatted = '';
+
+                        if (raw.length > 0) formatted += `(${raw.slice(0, 2)}`;
+                        if (raw.length >= 2) formatted += `) `;
+                        if (raw.length >= 3) formatted += `${raw.slice(2, 3)} `;
+                        if (raw.length >= 4) formatted += `${raw.slice(3, 7)}`;
+                        if (raw.length >= 8) formatted += `-${raw.slice(7, 11)}`;
+
+                        e.target.value = formatted;
+                      }}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-[#1E0549]/50 transition-colors ${errors.whatsapp ? 'border-[#1E0549]/50' : 'border-gray-300'
                         }`}
-                      placeholder="(11) 99999-9999"
+                      placeholder="(11) 9 1234-1234"
+                      onKeyDown={(e) => {
+                        const allowedKeys = [
+                          'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'
+                        ];
+                        if (!/^[0-9]$/.test(e.key) && !allowedKeys.includes(e.key)) {
+                          e.preventDefault();
+                        }
+                      }}
                     />
                     {errors.whatsapp && (
                       <p className="mt-1 text-sm text-[#1E0549]">{errors.whatsapp.message}</p>

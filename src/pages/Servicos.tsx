@@ -9,10 +9,23 @@ const empresaSchema = z.object({
   nomeEmpresa: z.string().min(2, 'Nome da empresa deve ter pelo menos 2 caracteres'),
   segmento: z.string().min(2, 'Segmento deve ter pelo menos 2 caracteres'),
   nome: z.string().min(2, 'Nome do responsável deve ter pelo menos 2 caracteres'),
-  emailCorporativo: z.string().email('E-mail corporativo inválido'),
-  whatsapp: z.string().min(10, 'WhatsApp deve ter pelo menos 10 dígitos'),
+  email: z.string().email('E-mail corporativo inválido'),
+  whatsapp: z.string()
+  .min(11, 'WhatsApp deve ter pelo menos 11 dígitos (incluindo DDD)')
+  .transform(val => {
+    const digits = val.replace(/\D/g, '');
+
+    if (digits.length === 11) {
+      // Formato: (11) 9 1234-1234
+      return `(${digits.slice(0, 2)}) ${digits.slice(2, 3)} ${digits.slice(3, 7)}-${digits.slice(7, 11)}`;
+    }
+
+    return digits; // Retorna apenas os números se não tiver 11 dígitos
+  }),
   servicoInteresse: z.string().min(1, 'Selecione um serviço de interesse'),
   mensagemApresentacao: z.string().min(10, 'Mensagem deve ter pelo menos 10 caracteres'),
+  instagram: z.string().optional(),
+  site: z.string().optional(),
   politicaprivacidade: z.literal(true, {
     errorMap: () => ({ message: 'Você deve concordar com a Política de privacidade para enviar o formulário.' })
   }),
@@ -615,18 +628,18 @@ const Servicos: React.FC = () => {
 
           {/* E-mail para Contato */}
           <div>
-            <label htmlFor="emailCorporativo" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
               E-mail para Contato *
             </label>
             <input
               type="email"
-              id="emailCorporativo"
-              {...register('emailCorporativo')}
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.emailCorporativo ? 'border-red-500' : 'border-gray-300'}`}
+              id="email"
+              {...register('email')}
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
               placeholder="email@empresa.com"
             />
-            {errors.emailCorporativo && (
-              <p className="mt-1 text-sm text-red-600">{errors.emailCorporativo.message}</p>
+            {errors.email && (
+              <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
             )}
           </div>
 
@@ -646,21 +659,19 @@ const Servicos: React.FC = () => {
               <p className="mt-1 text-sm text-red-600">{errors.whatsapp.message}</p>
             )}
           </div>
-
-          {/* Site */}
-          <div>
+{/* Site */}
+<div>
             <label htmlFor="site" className="block text-sm font-medium text-gray-700 mb-2">
               Site
             </label>
             <input
-              type="url"
+              type="text"
               id="site"
               {...register('site')}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
               placeholder="https://www.suaempresa.com.br"
             />
           </div>
-
           {/* Instagram */}
           <div>
             <label htmlFor="instagram" className="block text-sm font-medium text-gray-700 mb-2">

@@ -53,7 +53,7 @@ const Header: React.FC = () => {
                 className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   isActive(item.href)
                     ? 'text-white border-b-2 border-white'
-                    : 'text-gray-700 hover:text-white hover:border-b-2 hover:border-white'
+                    : 'text-white hover:text-white hover:border-b-2 hover:border-white'
                 }`}
               >
                 {item.name}
@@ -64,7 +64,7 @@ const Header: React.FC = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-md text-gray-700 hover:text-white hover:bg-gray-100 transition-colors duration-200"
+            className="md:hidden p-2 rounded-md text-white hover:text-white hover:bg-gray-100 transition-colors duration-200"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -82,7 +82,7 @@ const Header: React.FC = () => {
                   className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
                     isActive(item.href)
                       ? 'text-black bg-white'
-                      : 'text-gray-700 hover:text-black hover:bg-gray-50'
+                      : 'text-white hover:text-black hover:bg-gray-50'
                   }`}
                 >
                   {item.name}
